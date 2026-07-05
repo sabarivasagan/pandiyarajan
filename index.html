@@ -1,0 +1,1628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dr. R. Pandiyarajan — Mechanical Engineering Researcher</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-0:#FFFFFF;
+    --bg-1:#F5F0FF;
+    --bg-2:#EDE8FF;
+    --line:rgba(109,40,217,0.15);
+    --line-soft:rgba(109,40,217,0.08);
+    --line-faint:rgba(109,40,217,0.04);
+    --ink:#1A0533;
+    --ink-dim:#4C1D95;
+    --ink-faint:#7C5BB5;
+    --blue-dark:#3B0764;
+    --blue-mid:#7C3AED;
+    --blue-light:#A78BFA;
+    --teal:#8B5CF6;
+    --teal-bright:#A855F7;
+    --copper:#7C3AED;
+    --copper-bright:#A855F7;
+    --brass:#C084FC;
+    --good:#7C3AED;
+    --grad-blue:linear-gradient(135deg,#4C1D95 0%,#7C3AED 100%);
+    --grad-blue-teal:linear-gradient(135deg,#7C3AED 0%,#A855F7 100%);
+    --grad-teal:linear-gradient(135deg,#7C3AED 0%,#C084FC 100%);
+    --font-display:'Space Grotesk', sans-serif;
+    --font-mono:'IBM Plex Mono', monospace;
+    --font-body:'IBM Plex Sans', sans-serif;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
+  }
+
+  body{
+    background:var(--bg-0);
+    color:var(--ink);
+    font-family:var(--font-body);
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    background-image:
+      linear-gradient(var(--line-faint) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line-faint) 1px, transparent 1px);
+    background-size: 48px 48px;
+    overflow-x:hidden;
+  }
+
+  a{color:inherit; text-decoration:none;}
+
+  .wrap{max-width:1180px; margin:0 auto; padding:0 32px;}
+  @media (max-width:720px){ .wrap{padding:0 18px;} }
+
+  /* ---------- focus ---------- */
+  a:focus-visible, button:focus-visible{
+    outline:2px solid var(--copper-bright);
+    outline-offset:3px;
+  }
+
+  /* ---------- title-block label ---------- */
+  .eyebrow{
+    font-family:var(--font-mono);
+    font-size:12px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--copper-bright);
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:14px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:18px; height:2px;
+    background:linear-gradient(90deg,#7C3AED,#A855F7);
+    display:inline-block;
+  }
+
+  h1,h2,h3{font-family:var(--font-display); font-weight:600; letter-spacing:-0.01em;}
+
+  /* ================= NAV ================= */
+  header.nav{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    background:linear-gradient(135deg,rgba(60,7,100,0.97) 0%,rgba(109,40,217,0.97) 100%);
+    backdrop-filter:blur(12px);
+    border-bottom:2px solid rgba(168,85,247,0.4);
+    box-shadow:0 2px 24px rgba(76,29,149,0.35);
+  }
+  .nav-inner{
+    max-width:1180px; margin:0 auto; padding:0 32px;
+    height:64px; display:flex; align-items:center; justify-content:space-between;
+  }
+  .brand{
+    font-family:var(--font-mono); font-size:13px; letter-spacing:.06em;
+    color:#fff; display:flex; align-items:center; gap:10px;
+  }
+  .brand .tag{color:#C084FC;}
+  .navlinks{display:flex; gap:28px; font-family:var(--font-mono); font-size:12.5px; letter-spacing:.04em;}
+  .navlinks a{color:rgba(255,255,255,0.65); position:relative; padding:4px 0; transition:color .2s;}
+  .navlinks a:hover, .navlinks a.active{color:#fff;}
+  .navlinks a.active::after{
+    content:""; position:absolute; left:0; right:0; bottom:-3px; height:2px;
+    background:linear-gradient(90deg,#C084FC,#A855F7);
+  }
+  .nav-toggle{display:none; background:none; border:1px solid rgba(255,255,255,0.25); color:#fff; padding:8px 10px; font-family:var(--font-mono); font-size:12px;}
+  @media (max-width:860px){
+    .navlinks{display:none;}
+    .nav-toggle{display:inline-block;}
+    .navlinks.open{
+      display:flex; position:absolute; top:64px; left:0; right:0;
+      background:linear-gradient(135deg,#3B0764 0%,#7C3AED 100%);
+      flex-direction:column; padding:14px 18px; gap:14px; border-bottom:1px solid rgba(168,85,247,0.3);
+    }
+  }
+
+  /* ================= HERO ================= */
+  .hero{
+    position:relative;
+    padding:0;
+    border-bottom:1px solid var(--line);
+    overflow:hidden;
+    background:#fff;
+    min-height:100vh;
+    display:flex; align-items:stretch;
+  }
+  /* blob right panel */
+  .hero::before{ content:none; }
+  .hero::after{ content:none; }
+  .hero-grid{
+    display:grid; grid-template-columns: 1.1fr 0.9fr; gap:0; align-items:center;
+    width:100%; max-width:1180px; margin:0 auto; padding:0 32px;
+    position:relative; z-index:2;
+    padding-top:120px; padding-bottom:80px;
+  }
+  @media (max-width:900px){
+    .hero-grid{grid-template-columns:1fr; padding-top:100px; padding-bottom:60px;}
+    .hero::before{width:100%; height:45%; top:auto; bottom:0; right:0; border-radius:60% 60% 0 0 / 40% 40% 0 0;}
+    .hero::after{width:100%; height:45%; top:auto; bottom:0;}
+    .hero-illus{display:none;}
+  }
+
+  .hero-avatar{
+    width:110px; height:110px; border-radius:50%; overflow:hidden;
+    border:3px solid transparent;
+    background:linear-gradient(var(--bg-0),var(--bg-0)) padding-box,
+               linear-gradient(135deg,#4338CA,#7C3AED) border-box;
+    box-shadow:0 4px 24px rgba(67,56,202,0.25);
+    margin-bottom:22px;
+  }
+  .hero-avatar img{width:100%; height:100%; object-fit:cover; object-position:center top;}
+  @media(max-width:600px){.hero-avatar{width:80px; height:80px;}}
+  .hero-eyebrow{font-family:var(--font-mono); font-size:13px; color:var(--ink-faint); letter-spacing:.12em; text-transform:uppercase; margin-bottom:22px;}
+  .hero h1{
+    font-size:clamp(38px,6vw,64px);
+    line-height:1.04;
+    color:var(--ink);
+  }
+  .hero h1 span{color:var(--copper-bright);}
+  .hero .role{
+    margin-top:18px;
+    font-family:var(--font-mono);
+    font-size:15px;
+    color:var(--ink-dim);
+    line-height:1.7;
+  }
+  .hero .role b{color:var(--ink); font-weight:600;}
+  .hero p.lede{
+    margin-top:22px; max-width:560px; color:var(--ink-dim); font-size:16.5px;
+  }
+  .hero-cta{display:flex; gap:12px; margin-top:34px; flex-wrap:wrap;}
+  .btn{
+    font-family:var(--font-mono); font-size:12.5px; letter-spacing:.04em;
+    padding:11px 18px; border:1px solid var(--line); color:var(--ink);
+    display:inline-flex; align-items:center; gap:8px; transition:all .2s;
+    background:transparent;
+  }
+  .btn:hover{border-color:var(--copper); color:var(--copper-bright); transform:translateY(-1px);}
+  .btn.primary{background:linear-gradient(135deg,#4C1D95,#7C3AED); border:none; color:#fff; font-weight:600; border-radius:28px; padding:12px 24px;}
+  .btn.primary:hover{background:linear-gradient(135deg,#7C3AED,#A855F7); color:#fff; transform:translateY(-2px); box-shadow:0 8px 24px rgba(124,58,237,0.35);}
+  .btn-download{background:linear-gradient(135deg,#A855F7,#C084FC) !important; border-radius:28px; padding:12px 24px;}
+  .btn-download:hover{background:linear-gradient(135deg,#7C3AED,#A855F7) !important; box-shadow:0 8px 24px rgba(168,85,247,0.35);}
+
+  .hero-stats{
+    display:grid; grid-template-columns:repeat(2,1fr); gap:1px;
+    margin-top:46px; border:1px solid var(--line); background:var(--line-soft);
+    max-width:520px;
+  }
+  .stat{background:var(--bg-0); padding:16px 18px; position:relative; overflow:hidden;}
+  .stat::before{content:""; position:absolute; bottom:0; left:0; right:0; height:3px; background:var(--grad-blue-teal);}
+  .stat .n{font-family:var(--font-display); font-size:26px; font-weight:700;
+    background:var(--grad-blue); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;}
+  .stat .l{font-family:var(--font-mono); font-size:10.5px; color:var(--ink-faint); letter-spacing:.06em; text-transform:uppercase; margin-top:4px;}
+
+  /* hero diagram */
+  .diagram-card{
+    border:1px solid rgba(109,40,217,0.25);
+    background:linear-gradient(160deg,#2D1060 0%,#4C1D95 50%,#3B0764 100%);
+    padding:18px 18px 10px;
+    position:relative;
+    box-shadow:0 8px 32px rgba(76,29,149,0.25);
+  }
+  .diagram-card .cap{
+    font-family:var(--font-mono); font-size:11px; color:rgba(196,181,253,0.7);
+    display:flex; justify-content:space-between; letter-spacing:.04em; margin-bottom:6px;
+  }
+  .diagram-card svg{width:100%; height:auto; display:block;}
+
+  .pin{ transform-origin: 200px 92px; animation: spin 2.6s linear infinite; }
+  @keyframes spin{ to{ transform: rotate(360deg); } }
+  .spark{ animation: flicker 1.6s ease-in-out infinite; }
+  .spark.s2{ animation-delay:.4s; }
+  .spark.s3{ animation-delay:.8s; }
+  @keyframes flicker{ 0%,100%{ opacity:.15; } 50%{ opacity:1; } }
+  .heatzone{ animation: pulse 2.8s ease-in-out infinite; }
+  @keyframes pulse{ 0%,100%{ opacity:.35; } 50%{ opacity:.7; } }
+
+  /* ================= SECTION shell ================= */
+  section{padding:88px 0; border-bottom:1px solid var(--line);}
+  .sheet-head{
+    display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:10px;
+    margin-bottom:46px;
+  }
+  .sheet-head h2{font-size:clamp(26px,3.4vw,36px);
+    background:var(--grad-blue); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;}
+  .sheet-no{font-family:var(--font-mono); font-size:12px; color:var(--ink-faint); letter-spacing:.05em;}
+
+  .reveal{opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+
+  /* ===== summary ===== */
+  .summary-grid{display:grid; grid-template-columns:1.1fr .9fr; gap:54px;}
+  @media (max-width:860px){ .summary-grid{grid-template-columns:1fr;} }
+  .summary-grid p{color:var(--ink-dim); font-size:16.5px; margin-bottom:16px;}
+  .focus-list{display:grid; gap:10px;}
+  .focus-item{
+    border:1px solid var(--line); padding:14px 16px; display:flex; gap:14px; align-items:flex-start;
+    background:var(--bg-1);
+  }
+  .focus-item .ico{flex:0 0 auto; color:var(--copper-bright); margin-top:2px;}
+  .focus-item h4{font-family:var(--font-mono); font-size:13px; letter-spacing:.03em; color:var(--ink); margin-bottom:3px;}
+  .focus-item p{font-size:13.5px; color:var(--ink-faint); margin:0;}
+
+  /* ===== revision table (experience) ===== */
+  .revtable{width:100%; border:1px solid var(--line); border-collapse:collapse; font-size:14.5px;}
+  .revtable th{
+    font-family:var(--font-mono); font-size:11px; letter-spacing:.06em; text-transform:uppercase;
+    text-align:left; color:var(--ink-faint); background:var(--bg-1);
+    padding:10px 14px; border-bottom:1px solid var(--line);
+  }
+  .revtable td{padding:16px 14px; border-bottom:1px solid var(--line-soft); vertical-align:top; color:var(--ink-dim);}
+  .revtable tr:last-child td{border-bottom:none;}
+  .revtable td.rev{font-family:var(--font-mono); color:var(--copper-bright); font-weight:600;}
+  .revtable td .role{color:var(--ink); font-weight:600; font-family:var(--font-body);}
+  .revtable td .inst{font-size:13px; color:var(--ink-faint); margin-top:2px;}
+  .revtable td .dur{font-family:var(--font-mono); font-size:12px; color:var(--ink-faint);}
+  .revtable .current{color:var(--good) !important;}
+  .table-scroll{overflow-x:auto;}
+
+  /* ===== education ===== */
+  .edu-grid{display:grid; gap:10px;}
+  .edu-row{
+    display:grid; grid-template-columns: 70px 1.4fr 1fr 90px 110px; gap:16px; align-items:center;
+    border:1px solid var(--line-soft); border-left:2px solid var(--line);
+    padding:14px 16px; font-size:14px; background:var(--bg-1);
+  }
+  .edu-row.head{
+    font-family:var(--font-mono); font-size:10.5px; text-transform:uppercase; letter-spacing:.06em;
+    color:var(--ink-faint); border:none; background:none; padding:0 16px;
+  }
+  @media (max-width:760px){
+    .edu-row{grid-template-columns:1fr; gap:4px;}
+    .edu-row.head{display:none;}
+  }
+  .edu-row .deg{font-family:var(--font-mono); color:var(--copper-bright); font-weight:600;}
+  .edu-row .inst{color:var(--ink);}
+  .edu-row .board{color:var(--ink-faint); font-size:13px;}
+  .edu-row .marks{font-family:var(--font-mono); color:var(--ink-dim);}
+
+  /* ===== phd block ===== */
+  .phd-card{
+    border:1px solid var(--copper); position:relative; padding:28px 28px 24px; background:var(--bg-1);
+  }
+  .phd-card::before{
+    content:"PH.D"; position:absolute; top:-11px; left:20px; background:var(--bg-0);
+    font-family:var(--font-mono); font-size:11px; letter-spacing:.1em; color:var(--copper-bright); padding:0 8px;
+  }
+  .phd-title{font-family:var(--font-display); font-size:21px; color:var(--ink); margin-bottom:18px; font-style:italic; max-width:760px;}
+  .phd-meta{display:grid; grid-template-columns:repeat(4,1fr); gap:18px;}
+  @media (max-width:760px){ .phd-meta{grid-template-columns:repeat(2,1fr);} }
+  .phd-meta div .k{font-family:var(--font-mono); font-size:10.5px; text-transform:uppercase; letter-spacing:.06em; color:var(--ink-faint);}
+  .phd-meta div .v{margin-top:4px; color:var(--ink);}
+
+  /* ===== funded projects ===== */
+  .fund-wrap{display:grid; grid-template-columns:1.1fr .9fr; gap:54px;}
+  @media (max-width:900px){ .fund-wrap{grid-template-columns:1fr;} }
+  .bar-row{margin-bottom:18px;}
+  .bar-label{display:flex; justify-content:space-between; font-size:13.5px; margin-bottom:6px;}
+  .bar-label .name{color:var(--ink);}
+  .bar-label .amt{font-family:var(--font-mono); color:var(--copper-bright);}
+  .bar-track{height:10px; background:var(--line-soft); position:relative; overflow:hidden;}
+  .bar-fill{height:100%; background:linear-gradient(90deg,#4C1D95,#7C3AED,#A855F7); width:0%; transition:width 1.1s cubic-bezier(.2,.8,.2,1);}
+  .bar-row .agency{font-family:var(--font-mono); font-size:11px; color:var(--ink-faint); margin-top:5px;}
+  .fund-total{
+    margin-top:26px; padding-top:18px; border-top:1px solid var(--line);
+    display:flex; justify-content:space-between; align-items:baseline;
+  }
+  .fund-total .l{font-family:var(--font-mono); font-size:12px; color:var(--ink-faint); letter-spacing:.05em; text-transform:uppercase;}
+  .fund-total .v{font-family:var(--font-display); font-size:28px; font-weight:700;
+    background:var(--grad-blue-teal); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;}
+  .fund-note{border:1px solid var(--line); background:var(--bg-1); padding:22px; font-size:14px; color:var(--ink-dim);}
+  .fund-note h4{font-family:var(--font-mono); font-size:12px; color:var(--ink-faint); text-transform:uppercase; letter-spacing:.06em; margin-bottom:10px;}
+
+  /* ===== patents ===== */
+  .patent-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:1px; border:1px solid var(--line); background:var(--line-soft);}
+  .patent-plate{background:var(--bg-1); padding:22px; position:relative;}
+  .patent-plate .pno{font-family:var(--font-mono); font-size:11px; color:var(--copper-bright); letter-spacing:.04em;}
+  .patent-plate .ptype{font-family:var(--font-mono); font-size:10px; color:var(--ink-faint); text-transform:uppercase; letter-spacing:.06em; margin-top:2px;}
+  .patent-plate h4{margin-top:14px; font-family:var(--font-body); font-weight:600; font-size:15.5px; color:var(--ink); line-height:1.4;}
+  .patent-plate .pdate{margin-top:14px; font-family:var(--font-mono); font-size:11px; color:var(--ink-faint);}
+  .patent-summary{display:flex; gap:34px; margin-bottom:36px; flex-wrap:wrap;}
+  .patent-summary .ps{display:flex; flex-direction:column;}
+  .patent-summary .n{font-family:var(--font-display); font-size:34px; font-weight:700;
+    background:var(--grad-blue); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;}
+  .patent-summary .l{font-family:var(--font-mono); font-size:11px; color:var(--ink-faint); text-transform:uppercase; letter-spacing:.05em; margin-top:2px;}
+
+  /* ===== publications ===== */
+  .pub-stats{
+    display:grid; grid-template-columns:repeat(6,1fr); border:1px solid var(--line); margin-bottom:36px;
+  }
+  @media (max-width:860px){ .pub-stats{grid-template-columns:repeat(3,1fr);} }
+  @media (max-width:520px){ .pub-stats{grid-template-columns:repeat(2,1fr);} }
+  .pub-stat{padding:18px 12px; text-align:center; border-right:1px solid var(--line);}
+  .pub-stat:last-child{border-right:none;}
+  .pub-stat .n{font-family:var(--font-display); font-size:26px; font-weight:700;
+    background:var(--grad-blue); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;}
+  .pub-stat .l{font-family:var(--font-mono); font-size:9.5px; color:var(--ink-faint); text-transform:uppercase; letter-spacing:.04em; margin-top:5px; line-height:1.4;}
+
+  .profile-links{display:flex; gap:10px; flex-wrap:wrap; margin-bottom:36px;}
+  .plink{
+    font-family:var(--font-mono); font-size:12px; border:1px solid var(--line); padding:9px 14px;
+    display:inline-flex; align-items:center; gap:8px; color:var(--ink-dim); transition:.2s;
+  }
+  .plink:hover{border-color:var(--copper); color:var(--copper-bright);}
+  .plink .dot{width:6px; height:6px; border-radius:50%; background:var(--good);}
+
+  .year-filters{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:28px;}
+  .ychip{
+    font-family:var(--font-mono); font-size:12px; border:1px solid var(--line); background:transparent;
+    color:var(--ink-dim); padding:8px 14px; cursor:pointer; transition:.2s;
+  }
+  .ychip:hover{border-color:var(--copper-bright); color:var(--ink);}
+  .ychip.active{background:var(--grad-blue); border-color:#1A56DB; color:#fff; font-weight:600;}
+
+  .pub-list{border-top:1px solid var(--line);}
+  .pub-row{
+    display:grid; grid-template-columns:56px 1fr 110px; gap:18px;
+    padding:16px 0; border-bottom:1px solid var(--line-soft); align-items:baseline;
+  }
+  .pub-row .idx{font-family:var(--font-mono); color:var(--ink-faint); font-size:13px;}
+  .pub-row .ptitle{color:var(--ink); font-size:14.5px; line-height:1.5;}
+  .pub-row .pauthors{color:var(--ink-faint); font-size:12.5px; margin-top:3px;}
+  .pub-row .pvenue{color:var(--copper-bright); font-size:12.5px; font-style:italic;}
+  .pub-row .pyear{font-family:var(--font-mono); font-size:13px; color:var(--ink-dim); text-align:right;}
+  @media (max-width:640px){
+    .pub-row{grid-template-columns:36px 1fr; }
+    .pub-row .pyear{grid-column:2; text-align:left; margin-top:4px;}
+  }
+  .pub-row.hidden{display:none;}
+  .pub-more{
+    margin-top:22px; font-family:var(--font-mono); font-size:12.5px; color:var(--ink-dim);
+    border:1px solid var(--line); padding:10px 16px; background:transparent; cursor:pointer; display:inline-block;
+  }
+  .pub-more:hover{border-color:var(--copper-bright); color:var(--copper-bright);}
+
+  /* ===== awards / responsibilities ===== */
+  .two-col{display:grid; grid-template-columns:1fr 1fr; gap:54px;}
+  @media (max-width:860px){ .two-col{grid-template-columns:1fr;} }
+  .badge-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:1px; border:1px solid var(--line); background:var(--line-soft); margin-top:18px;}
+  .badge{background:linear-gradient(160deg,#EEF4FF,#F5F0FF); padding:18px 16px; font-size:13px; color:var(--ink-dim); text-align:center; border-top:2px solid transparent; border-image:linear-gradient(90deg,#7C3AED,#A855F7) 1;}
+  .badge b{display:block; color:var(--blue-dark); font-family:var(--font-body); font-size:13.5px; margin-bottom:4px;}
+
+  .award-list{list-style:none; display:grid; gap:12px;}
+  .award-list li{
+    display:flex; gap:14px; align-items:flex-start; border-bottom:1px solid var(--line-soft); padding-bottom:12px; font-size:14.5px; color:var(--ink-dim);
+  }
+  .award-list li .yr{font-family:var(--font-mono); color:var(--copper-bright); font-size:12px; min-width:60px;}
+
+  .role-list{list-style:none; display:grid; gap:10px; margin-top:10px;}
+  .role-list li{font-size:14px; color:var(--ink-faint); padding-left:18px; position:relative;}
+  .role-list li::before{content:"—"; position:absolute; left:0; color:var(--copper-bright);}
+
+  /* ===== contact / footer ===== */
+  footer{padding:80px 0 50px; background:linear-gradient(160deg,#EEF4FF 0%,#FFFFFF 60%,#F5F0FF 100%); border-top:3px solid transparent; border-image:linear-gradient(90deg,#4C1D95,#7C3AED,#A855F7) 1;}
+  .contact-grid{display:grid; grid-template-columns:1.2fr 1fr; gap:54px;}
+  @media (max-width:860px){ .contact-grid{grid-template-columns:1fr;} }
+  .contact-grid h2{font-size:clamp(26px,3.6vw,38px); margin-bottom:18px;}
+  .contact-grid p{color:var(--ink-dim); max-width:480px; margin-bottom:26px;}
+  .clist{display:grid; gap:14px;}
+  .clist a, .clist span{
+    display:flex; gap:12px; align-items:center; font-family:var(--font-mono); font-size:13.5px; color:var(--ink-dim);
+  }
+  .clist a:hover{color:var(--copper-bright);}
+  .ext-grid{display:grid; gap:1px; border:1px solid var(--line); background:var(--line-soft);}
+  .ext-link{background:var(--bg-1); padding:16px 18px; display:flex; justify-content:space-between; align-items:center; transition:.2s;}
+  .ext-link:hover{background:var(--bg-2);}
+  .ext-link .name{font-family:var(--font-body); font-weight:600; color:var(--ink); font-size:14px;}
+  .ext-link .sub{font-family:var(--font-mono); font-size:11px; color:var(--ink-faint); margin-top:2px;}
+  .ext-link .arrow{color:var(--copper-bright); font-family:var(--font-mono);}
+  footer .bottom{
+    margin-top:60px; padding-top:24px; border-top:1px solid var(--line);
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
+    font-family:var(--font-mono); font-size:11.5px; color:var(--ink-faint);
+  }
+
+  .icon{width:20px; height:20px; flex:0 0 auto;}
+
+  /* ===== DOWNLOAD BUTTON ===== */
+  .btn-download{
+    background:linear-gradient(135deg,#7C3AED,#A855F7);
+    border-color:transparent; color:#fff; font-weight:600;
+  }
+  .btn-download:hover{background:linear-gradient(135deg,#4C1D95,#7C3AED); border-color:transparent; color:#fff;}
+
+  /* ===== GALLERY ===== */
+  .gallery-grid{
+    columns:3; column-gap:14px;
+  }
+  @media(max-width:860px){.gallery-grid{columns:2;}}
+  @media(max-width:480px){.gallery-grid{columns:1;}}
+
+  .gallery-item{
+    break-inside:avoid; margin-bottom:14px; position:relative;
+    overflow:hidden; cursor:pointer; border:1px solid var(--line);
+  }
+  .gallery-item:hover .gallery-overlay{opacity:1;}
+  .gallery-item:hover .gallery-img{transform:scale(1.04);}
+
+  .gallery-img{
+    width:100%; display:block; transition:transform .4s ease;
+    background:var(--bg-1);
+  }
+  .gallery-placeholder{
+    width:100%; display:block;
+    background:var(--grad-blue);
+    display:flex; align-items:center; justify-content:center;
+    min-height:160px; position:relative; overflow:hidden;
+  }
+  .gallery-placeholder::after{
+    content:""; position:absolute; inset:0;
+    background:linear-gradient(135deg, rgba(255,255,255,0.07) 0%, transparent 60%);
+  }
+  .gallery-placeholder .gp-icon{
+    font-family:var(--font-mono); font-size:28px; color:rgba(255,255,255,0.18); user-select:none;
+  }
+  .gallery-overlay{
+    position:absolute; inset:0; background:linear-gradient(to top,rgba(67,56,202,0.96) 0%,rgba(109,40,217,0.72) 55%,transparent 100%);
+    opacity:0; transition:opacity .3s ease;
+    display:flex; flex-direction:column; justify-content:flex-end; padding:16px;
+  }
+  .gallery-overlay .g-title{font-size:13.5px; color:#fff; font-weight:600; font-family:var(--font-body); line-height:1.3;}
+  .gallery-overlay .g-tag{font-family:var(--font-mono); font-size:10.5px; color:#C4B5FD; text-transform:uppercase; letter-spacing:.06em; margin-top:4px;}
+
+  /* lightbox */
+  .lb-backdrop{
+    display:none; position:fixed; inset:0; z-index:999;
+    background:rgba(11,42,107,0.92); backdrop-filter:blur(8px);
+    align-items:center; justify-content:center; padding:24px;
+  }
+  .lb-backdrop.open{display:flex;}
+  .lb-box{
+    background:var(--bg-1); border:1px solid var(--line); max-width:760px; width:100%;
+    position:relative; padding:24px;
+  }
+  .lb-box img, .lb-box .lb-placeholder{width:100%; display:block; min-height:260px; background:var(--grad-blue);}
+  .lb-box .lb-placeholder{display:flex; align-items:center; justify-content:center;}
+  .lb-box .lb-placeholder .gp-icon{font-size:48px; color:rgba(255,255,255,0.2);}
+  .lb-caption{margin-top:14px;}
+  .lb-caption h3{font-family:var(--font-display); font-size:18px; color:var(--ink);}
+  .lb-caption p{font-family:var(--font-mono); font-size:12px; color:var(--ink-faint); margin-top:4px; text-transform:uppercase; letter-spacing:.05em;}
+  .lb-close{
+    position:absolute; top:-38px; right:0;
+    background:rgba(11,42,107,0.7); border:1px solid rgba(255,255,255,0.25); color:#fff;
+    font-family:var(--font-mono); font-size:12px; padding:6px 12px; cursor:pointer;
+  }
+  .lb-close:hover{background:rgba(109,40,217,0.85); border-color:rgba(196,181,253,0.5);}
+  .lb-nav{display:flex; justify-content:space-between; margin-top:14px;}
+  .lb-nav button{
+    background:none; border:1px solid var(--line); color:var(--ink-dim);
+    font-family:var(--font-mono); font-size:12px; padding:7px 16px; cursor:pointer; transition:.2s;
+  }
+  .lb-nav button:hover{border-color:var(--blue-mid); color:var(--blue-mid);}
+
+  @media(max-width:600px){
+    .lb-box{padding:16px;}
+    .lb-caption h3{font-size:15px;}
+  }
+
+  /* ===== MOBILE RESPONSIVE ===== */
+
+  /* -- Nav: keep brand on one line -- */
+  @media (max-width:600px){
+    .nav-inner{ padding:0 16px; height:56px; }
+    .brand{ font-size:11px; letter-spacing:.03em; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:220px; }
+    .brand .tag{ display:none; }
+    .nav-toggle{ padding:6px 10px; font-size:11px; }
+  }
+
+  /* -- Hero: tighten top padding on small screens -- */
+  @media (max-width:600px){
+    .hero{ padding:90px 0 60px; }
+    .hero h1{ font-size:clamp(30px,8vw,48px); }
+    .hero .role{ font-size:13px; }
+    .hero p.lede{ font-size:15px; }
+    .hero-cta{ gap:8px; }
+    .btn{ padding:9px 14px; font-size:12px; }
+    .hero-stats{ max-width:100%; }
+    .stat .n{ font-size:22px; }
+  }
+
+  /* -- Experience table: stack as cards on mobile -- */
+  @media (max-width:640px){
+    .revtable{ border:none; }
+    .revtable thead{ display:none; }
+    .revtable tbody tr{
+      display:block;
+      border:1px solid var(--line);
+      margin-bottom:10px;
+      padding:14px 16px;
+      background:var(--bg-1);
+    }
+    .revtable td{
+      display:block;
+      border:none;
+      padding:3px 0;
+      font-size:13.5px;
+    }
+    .revtable td.rev{
+      font-size:10px; letter-spacing:.08em;
+      margin-bottom:4px;
+    }
+    .revtable td .role{ font-size:14.5px; }
+    .revtable td .inst{ font-size:12.5px; margin-top:3px; }
+    .revtable td .dur{ display:block; margin-top:4px; }
+  }
+
+  /* -- Education rows: already stacks, just tighten -- */
+  @media (max-width:600px){
+    .edu-row{ padding:12px 14px; font-size:13px; }
+    .edu-row .deg{ font-size:13px; }
+    .phd-card{ padding:20px 16px; }
+    .phd-title{ font-size:17px; }
+  }
+
+  /* -- Sections: reduce padding -- */
+  @media (max-width:600px){
+    section{ padding:60px 0; }
+    .sheet-head{ margin-bottom:30px; }
+    .sheet-head h2{ font-size:clamp(22px,6vw,30px); }
+    .sheet-no{ font-size:10px; }
+  }
+
+  /* -- Funding: scale down the total value -- */
+  @media (max-width:600px){
+    .fund-total .v{ font-size:20px; }
+    .bar-label{ font-size:12.5px; }
+    .fund-note{ padding:16px; font-size:13px; }
+  }
+
+  /* -- Patent plates: full width on very small -- */
+  @media (max-width:400px){
+    .patent-grid{ grid-template-columns:1fr; }
+    .patent-summary .n{ font-size:28px; }
+  }
+
+  /* -- Publications stats: 2-col on smallest screens -- */
+  @media (max-width:400px){
+    .pub-stats{ grid-template-columns:repeat(2,1fr); }
+    .pub-stat .n{ font-size:20px; }
+  }
+
+  /* -- Profile links: wrap nicely -- */
+  @media (max-width:600px){
+    .plink{ font-size:11px; padding:8px 12px; }
+    .year-filters{ gap:6px; }
+    .ychip{ padding:6px 10px; font-size:11px; }
+  }
+
+  /* -- Pub rows: already has 2-col breakpoint -- */
+  @media (max-width:600px){
+    .pub-row{ gap:10px; }
+    .pub-row .ptitle{ font-size:13.5px; }
+    .pub-row .pauthors, .pub-row .pvenue{ font-size:12px; }
+  }
+
+  /* -- Awards / two-col recognition -- */
+  @media (max-width:600px){
+    .badge-grid{ grid-template-columns:repeat(2,1fr); }
+    .award-list li{ font-size:13.5px; }
+  }
+
+  /* -- Contact footer -- */
+  @media (max-width:600px){
+    footer{ padding:50px 0 36px; }
+    .contact-grid h2{ font-size:clamp(20px,5.5vw,28px); }
+    .clist a, .clist span{ font-size:12.5px; gap:8px; }
+    .ext-link .name{ font-size:13px; }
+    .ext-link .sub{ font-size:10px; }
+    footer .bottom{ flex-direction:column; gap:6px; font-size:11px; }
+  }
+
+  /* -- Summary focus items -- */
+  @media (max-width:600px){
+    .focus-item{ padding:12px 14px; }
+    .focus-item h4{ font-size:12px; }
+    .focus-item p{ font-size:12.5px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <div class="brand">DR. R. PANDIYARAJAN <span class="tag">/ DWG-CV-01</span></div>
+    <nav class="navlinks" id="navlinks">
+      <a href="#summary">Profile</a>
+      <a href="#experience">Experience</a>
+      <a href="#research">Research</a>
+      <a href="#funding">Funding</a>
+      <a href="#patents">Patents</a>
+      <a href="#publications">Publications</a>
+      <a href="#recognition">Recognition</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">MENU</button>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="top">
+  <div class="hero-grid">
+    <!-- LEFT: text -->
+    <div style="position:relative;z-index:3;">
+      <div class="hero-avatar">
+        <img src="gallery/profile-pic.jpeg" alt="Dr. R. Pandiyarajan">
+      </div>
+      <div class="hero-eyebrow" style="color:#7C3AED;font-weight:600;">Mechanical Engineering Researcher &amp; Dean R&amp;D</div>
+      <h1 style="font-size:clamp(34px,5.5vw,58px);line-height:1.08;color:#1A0533;">
+        Dr. R. <span style="color:#7C3AED;">Pandiyarajan</span>
+      </h1>
+      <div class="role" style="color:#4C1D95;margin-top:14px;font-size:14.5px;">
+        <b style="color:#1A0533;">Agni College of Technology, Chennai</b><br>
+        <span id="exp-yrs">13.4</span> yrs · Friction Stir Welding · Metal Matrix Composites · Additive Manufacturing
+      </div>
+      <p class="lede" style="color:#4C1D95;font-size:15.5px;margin-top:18px;max-width:520px;">
+        Ph.D. (Anna University, 2020). Researches aluminium hybrid composites and friction stir welding; leads ₹1.14 Cr in funded drone, ROV &amp; ECU hardware projects.
+      </p>
+      <div class="hero-cta" style="margin-top:28px;">
+        <a class="btn primary" href="#publications">View 60 Publications</a>
+        <a class="btn btn-download" href="resume.pdf" download style="color:#fff;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 3v13M7 11l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 20h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          Download CV
+        </a>
+        <a class="btn" href="mailto:pandiyan.rajan8@gmail.com" style="border-radius:28px;border-color:rgba(124,58,237,0.3);color:#7C3AED;">Email</a>
+      </div>
+    </div>
+
+    <!-- RIGHT: stats + highlights -->
+    <div style="position:relative;z-index:3;display:flex;flex-direction:column;gap:20px;padding-left:40px;">
+      <!-- Big stat cards -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+        <div style="background:linear-gradient(135deg,#4C1D95,#7C3AED);border-radius:16px;padding:28px 24px;color:#fff;">
+          <div style="font-size:40px;font-weight:800;font-family:var(--font-mono);line-height:1;">60</div>
+          <div style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;opacity:.8;margin-top:6px;">Publications</div>
+        </div>
+        <div style="background:linear-gradient(135deg,#6D28D9,#A855F7);border-radius:16px;padding:28px 24px;color:#fff;">
+          <div style="font-size:40px;font-weight:800;font-family:var(--font-mono);line-height:1;">571+</div>
+          <div style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;opacity:.8;margin-top:6px;">Citations</div>
+        </div>
+        <div style="background:#F5F0FF;border-radius:16px;padding:28px 24px;border:1px solid rgba(124,58,237,0.15);">
+          <div style="font-size:40px;font-weight:800;font-family:var(--font-mono);color:#7C3AED;line-height:1;">h-14</div>
+          <div style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#7C5BB5;margin-top:6px;">h-index</div>
+        </div>
+        <div style="background:#F5F0FF;border-radius:16px;padding:28px 24px;border:1px solid rgba(124,58,237,0.15);">
+          <div style="font-size:36px;font-weight:800;font-family:var(--font-mono);color:#7C3AED;line-height:1;">₹1.14 Cr</div>
+          <div style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#7C5BB5;margin-top:6px;">Funded Grants</div>
+        </div>
+      </div>
+      <!-- Key highlights strip -->
+      <div style="background:#F5F0FF;border-radius:14px;padding:20px 24px;border:1px solid rgba(124,58,237,0.12);display:flex;flex-direction:column;gap:10px;">
+        <div style="font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#7C3AED;font-family:var(--font-mono);margin-bottom:4px;">Key Highlights</div>
+        <div style="display:flex;align-items:center;gap:10px;font-size:14px;color:#1A0533;">
+          <span style="width:8px;height:8px;border-radius:50%;background:#7C3AED;flex-shrink:0;"></span>
+          Anna University–recognised Ph.D. Supervisor
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;font-size:14px;color:#1A0533;">
+          <span style="width:8px;height:8px;border-radius:50%;background:#A855F7;flex-shrink:0;"></span>
+          SCOPUS / Web of Science indexed researcher
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;font-size:14px;color:#1A0533;">
+          <span style="width:8px;height:8px;border-radius:50%;background:#C084FC;flex-shrink:0;"></span>
+          Dean R&amp;D — Agni College of Technology
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;font-size:14px;color:#1A0533;">
+          <span style="width:8px;height:8px;border-radius:50%;background:#7C3AED;flex-shrink:0;"></span>
+          Drone, ROV &amp; ECU hardware project lead
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: empty (purple blob from CSS ::before) -->
+    <div class="hero-illus" style="display:none;">
+      <svg viewBox="0 0 480 480" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:460px;">
+        <!-- Background rounded rect (warm yellow) -->
+        <rect x="20" y="20" width="440" height="440" rx="32" fill="#FFB830" opacity="0.18"/>
+
+        <!-- ===== BOARD ===== -->
+        <rect x="220" y="60" width="210" height="160" rx="10" fill="#1A0533"/>
+        <rect x="228" y="68" width="194" height="144" rx="6" fill="#231050"/>
+        <!-- Board frame top bar -->
+        <rect x="220" y="56" width="210" height="10" rx="4" fill="#2D1A6E"/>
+
+        <!-- Sine wave on board -->
+        <path d="M240 140 Q258 108 276 140 Q294 172 312 140 Q330 108 348 140 Q366 172 384 140 Q402 108 410 140" fill="none" stroke="#FFD700" stroke-width="2.5" stroke-linecap="round"/>
+        <!-- Axis lines -->
+        <line x1="238" y1="140" x2="412" y2="140" stroke="rgba(255,255,255,0.5)" stroke-width="1.2"/>
+        <line x1="250" y1="72" x2="250" y2="196" stroke="rgba(255,255,255,0.5)" stroke-width="1.2"/>
+        <!-- Arrow heads -->
+        <polygon points="412,137 418,140 412,143" fill="rgba(255,255,255,0.5)"/>
+        <polygon points="247,72 250,66 253,72" fill="rgba(255,255,255,0.5)"/>
+        <!-- "sin" label -->
+        <text x="368" y="90" font-family="Georgia,serif" font-size="22" font-style="italic" fill="#FFFFFF" opacity="0.9">sin</text>
+        <!-- O label -->
+        <text x="238" y="138" font-family="Georgia,serif" font-size="13" fill="rgba(255,255,255,0.7)">O</text>
+        <!-- F1≠F2 label -->
+        <text x="260" y="178" font-family="Georgia,serif" font-size="11" fill="rgba(255,255,255,0.65)">F₁ ≠ F₂</text>
+        <!-- Board ledge -->
+        <rect x="218" y="218" width="216" height="8" rx="3" fill="#2D1A6E"/>
+
+        <!-- ===== DESK / LEDGE ===== -->
+        <rect x="200" y="330" width="230" height="14" rx="4" fill="#5B21B6" opacity="0.7"/>
+        <!-- Apple -->
+        <ellipse cx="280" cy="326" rx="16" ry="15" fill="#EF4444"/>
+        <path d="M280 311 Q284 304 290 307" fill="none" stroke="#16A34A" stroke-width="2" stroke-linecap="round"/>
+        <ellipse cx="275" cy="319" rx="4" ry="6" fill="rgba(255,255,255,0.2)"/>
+        <!-- Book stack on desk -->
+        <rect x="298" y="308" width="44" height="22" rx="3" fill="#DC2626"/>
+        <rect x="300" y="312" width="40" height="4" rx="1" fill="rgba(255,255,255,0.3)"/>
+        <rect x="295" y="318" width="50" height="14" rx="3" fill="#1D4ED8"/>
+        <!-- Pencil holder -->
+        <rect x="358" y="305" width="30" height="26" rx="4" fill="#7C3AED" opacity="0.85"/>
+        <line x1="364" y1="305" x2="360" y2="290" stroke="#FCD34D" stroke-width="3" stroke-linecap="round"/>
+        <line x1="372" y1="305" x2="370" y2="288" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+        <line x1="380" y1="305" x2="378" y2="291" stroke="#F87171" stroke-width="3" stroke-linecap="round"/>
+
+        <!-- ===== PROFESSOR BODY ===== -->
+        <!-- Legs (dark trousers) -->
+        <rect x="168" y="350" width="28" height="90" rx="8" fill="#1E1B3A"/>
+        <rect x="204" y="350" width="28" height="90" rx="8" fill="#1E1B3A"/>
+
+        <!-- Body (blue-purple sweater) -->
+        <path d="M148 240 Q140 290 138 360 L262 360 Q260 290 252 240 Q230 232 200 232 Q170 232 148 240Z" fill="#5B21B6"/>
+        <!-- Sweater highlight -->
+        <path d="M163 245 Q158 280 155 320 L175 320 Q173 282 176 247Z" fill="rgba(255,255,255,0.08)"/>
+
+        <!-- Left arm (pointing up toward board) -->
+        <path d="M252 248 Q272 230 290 200 L304 208 Q286 240 270 258Z" fill="#5B21B6"/>
+        <!-- Left hand pointing -->
+        <ellipse cx="308" cy="205" rx="10" ry="8" fill="#3D1A00" transform="rotate(-30 308 205)"/>
+        <!-- Index finger -->
+        <rect x="303" y="190" width="7" height="22" rx="3.5" fill="#3D1A00" transform="rotate(-20 303 190)"/>
+
+        <!-- Right arm holding book -->
+        <path d="M148 248 Q128 268 118 305 L140 312 Q148 278 162 258Z" fill="#5B21B6"/>
+        <!-- Book in right hand -->
+        <rect x="100" y="300" width="50" height="36" rx="4" fill="#111827"/>
+        <rect x="103" y="303" width="44" height="30" rx="2" fill="#1E293B"/>
+        <rect x="106" y="308" width="30" height="3" rx="1" fill="#fff" opacity="0.7"/>
+        <rect x="106" y="315" width="22" height="3" rx="1" fill="#EF4444" opacity="0.8"/>
+        <rect x="106" y="322" width="28" height="2" rx="1" fill="rgba(255,255,255,0.3)"/>
+        <!-- Bookmark ribbon -->
+        <rect x="138" y="296" width="5" height="18" rx="1" fill="#EF4444"/>
+
+        <!-- Neck -->
+        <rect x="192" y="210" width="16" height="26" rx="6" fill="#3D1A00"/>
+
+        <!-- ===== HEAD ===== -->
+        <ellipse cx="200" cy="188" rx="38" ry="42" fill="#3D1A00"/>
+
+        <!-- Beard -->
+        <path d="M168 196 Q170 230 200 236 Q230 230 232 196 Q220 210 200 212 Q180 210 168 196Z" fill="#1A0A00"/>
+
+        <!-- Ear -->
+        <ellipse cx="162" cy="188" rx="7" ry="9" fill="#3D1A00"/>
+        <ellipse cx="238" cy="188" rx="7" ry="9" fill="#3D1A00"/>
+
+        <!-- Eyes (white + dark) -->
+        <ellipse cx="188" cy="178" rx="6" ry="6.5" fill="#fff"/>
+        <ellipse cx="212" cy="178" rx="6" ry="6.5" fill="#fff"/>
+        <circle cx="190" cy="179" r="4" fill="#1A0533"/>
+        <circle cx="214" cy="179" r="4" fill="#1A0533"/>
+        <circle cx="191" cy="178" r="1.5" fill="#fff"/>
+        <circle cx="215" cy="178" r="1.5" fill="#fff"/>
+
+        <!-- Eyebrows -->
+        <path d="M182 170 Q188 166 194 170" fill="none" stroke="#1A0A00" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M206 170 Q212 166 218 170" fill="none" stroke="#1A0A00" stroke-width="2.5" stroke-linecap="round"/>
+
+        <!-- Nose -->
+        <path d="M197 186 Q200 194 203 186" fill="none" stroke="#5C2800" stroke-width="1.5"/>
+
+        <!-- Smile -->
+        <path d="M187 202 Q200 214 213 202" fill="none" stroke="#5C2800" stroke-width="2" stroke-linecap="round"/>
+
+        <!-- Hair (top, short curly) -->
+        <path d="M162 172 Q164 142 200 138 Q236 142 238 172 Q228 155 200 153 Q172 155 162 172Z" fill="#0A0510"/>
+        <!-- Hair texture bumps -->
+        <path d="M165 162 Q170 154 178 158" fill="none" stroke="#0A0510" stroke-width="4" stroke-linecap="round"/>
+        <path d="M180 149 Q188 143 196 147" fill="none" stroke="#0A0510" stroke-width="4" stroke-linecap="round"/>
+        <path d="M204 147 Q212 143 220 149" fill="none" stroke="#0A0510" stroke-width="4" stroke-linecap="round"/>
+        <path d="M222 156 Q228 150 234 156" fill="none" stroke="#0A0510" stroke-width="4" stroke-linecap="round"/>
+      </svg>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= SUMMARY ================= -->
+<section id="summary">
+  <div class="wrap">
+    <div class="sheet-head reveal">
+      <h2>Profile</h2>
+      <span class="sheet-no">SHEET 01 / 08</span>
+    </div>
+    <div class="summary-grid reveal">
+      <div>
+        <p>Dr. R. Pandiyarajan is a mechanical engineering academic based in Chennai, currently serving as <b style="color:var(--ink)">Dean, Research &amp; Development</b> at Agni College of Technology. Over thirteen years across four institutions, his work has stayed close to one question: how do you join and characterise hybrid metal matrix composites so they hold up under real load?</p>
+        <p>His doctoral research, completed part-time at Anna University while teaching full time, examined friction stir welding of AA6061 reinforced with ZrO₂ and carbon particulate. That same experimental discipline — stir-casting, welding parameter optimisation, microstructure and fatigue testing — now runs through funded projects in agricultural drones, vehicle-reliability electronics, and coral-reef monitoring ROVs.</p>
+        <p>He is a recognised Anna University Ph.D. supervisor, a peer reviewer for three international journals, and a guest editor for the American Journal of Mechanical Engineering.</p>
+      </div>
+      <div class="focus-list">
+        <div class="focus-item">
+          <svg class="ico icon" viewBox="0 0 24 24" fill="none"><path d="M4 20l6-6m0 0l4-10 6 6-10 4z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+          <div><h4>Friction Stir Welding</h4><p>Process parameter optimisation, dissimilar and hybrid aluminium &amp; magnesium joints, FSSW fixtures.</p></div>
+        </div>
+        <div class="focus-item">
+          <svg class="ico icon" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.5"/><circle cx="5" cy="6" r="1.6" stroke="currentColor" stroke-width="1.5"/><circle cx="19" cy="6" r="1.6" stroke="currentColor" stroke-width="1.5"/><circle cx="5" cy="18" r="1.6" stroke="currentColor" stroke-width="1.5"/><circle cx="19" cy="18" r="1.6" stroke="currentColor" stroke-width="1.5"/></svg>
+          <div><h4>Metal Matrix Composites</h4><p>ZrO₂, B4C, SiC and graphite reinforced AA6061/AA6082 — stir casting, mechanical &amp; tribological behaviour.</p></div>
+        </div>
+        <div class="focus-item">
+          <svg class="ico icon" viewBox="0 0 24 24" fill="none"><path d="M4 19h16M7 19V9l5-5 5 5v10" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+          <div><h4>Additive Manufacturing</h4><p>3D-printing filament from biodegradable fibre composites; custom hearing-aid component production.</p></div>
+        </div>
+        <div class="focus-item">
+          <svg class="ico icon" viewBox="0 0 24 24" fill="none"><path d="M12 3v3M12 18v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M3 12h3M18 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="12" r="3.4" stroke="currentColor" stroke-width="1.5"/></svg>
+          <div><h4>Thermal &amp; Fatigue Analysis</h4><p>PCM ceiling thermal management, microchannel heat sinks, fatigue crack growth in alloy steels.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= EXPERIENCE — revision table ================= -->
+<section id="experience">
+  <div class="wrap">
+    <div class="sheet-head reveal">
+      <h2>Teaching &amp; Leadership History</h2>
+      <span class="sheet-no">SHEET 02 / 08</span>
+    </div>
+    <div class="table-scroll reveal">
+      <table class="revtable">
+        <thead>
+          <tr><th>#</th><th>Role</th><th>Institution</th><th>Period</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="rev current">5</td>
+            <td><div class="role current">Dean Research &amp; Development</div></td>
+            <td>Agni College of Technology, Chennai</td>
+            <td class="dur current">01.07.2026 — Present</td>
+          </tr>
+          <tr>
+            <td class="rev">4</td>
+            <td><div class="role">Professor &amp; Head - Mechatronics Engineering, Head R&amp;D</div></td>
+            <td>Agni College of Technology, Chennai</td>
+            <td class="dur">01.04.2025 — 30.06.2026</td>
+          </tr>
+          <tr>
+            <td class="rev">3</td>
+            <td><div class="role">Associate Professor &amp; Head, Mechatronics Engineering</div></td>
+            <td>Agni College of Technology, Chennai</td>
+            <td class="dur">16.08.2021 — 27.02.2025</td>
+          </tr>
+          <tr>
+            <td class="rev">2</td>
+            <td><div class="role">Assistant Professor</div></td>
+            <td>KLN College of Engineering, Madurai</td>
+            <td class="dur">01.07.2015 — 14.08.2021</td>
+          </tr>
+          <tr>
+            <td class="rev">1</td>
+            <td><div class="role">Assistant Professor</div></td>
+            <td>Latha Mathavan Engineering College, Madurai</td>
+            <td class="dur">01.06.2012 — 30.06.2015</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="margin-top:18px; font-family:var(--font-mono); font-size:12.5px; color:var(--ink-faint);">TOTAL TEACHING EXPERIENCE — <span style="color:var(--copper-bright);" id="exp-yrs-2">13.4 YEARS</span></p>
+  </div>
+</section>
+
+<!-- ================= EDUCATION + PHD ================= -->
+<section id="education">
+  <div class="wrap">
+    <div class="sheet-head reveal">
+      <h2>Academic Qualifications</h2>
+      <span class="sheet-no">SHEET 03 / 08</span>
+    </div>
+
+    <div class="edu-grid reveal" style="margin-bottom:50px;">
+      <div class="edu-row head">
+        <div>Degree</div><div>Institution</div><div>Board / University</div><div>Year</div><div>Result</div>
+      </div>
+      <div class="edu-row"><div class="deg">Ph.D</div><div class="inst">Thiyagarajar College of Engineering, Madurai</div><div class="board">Anna University, Chennai — Welding of Composite Materials</div><div class="marks">2020</div><div></div></div>
+      <div class="edu-row"><div class="deg">M.E.</div><div class="inst">Anna University Regional Campus, Tirunelveli</div><div class="board">Anna University, Chennai — CAD</div><div class="marks">2012</div><div class="marks">92.1% · Distinction</div></div>
+      <div class="edu-row"><div class="deg">B.E.</div><div class="inst">SACS MAVMM Engg College, Madurai</div><div class="board">Anna University, Chennai — Mechanical</div><div class="marks">2010</div><div class="marks">74% · 1st class</div></div>
+      <div class="edu-row"><div class="deg">D.M.E.</div><div class="inst">GMS MAVMM Polytechnic College, Madurai</div><div class="board">DOTE, Tamil Nadu — Mechanical</div><div class="marks">2007</div><div class="marks">81.1% · Honours</div></div>
+      <div class="edu-row"><div class="deg">SSLC</div><div class="inst">Govt. High School, Achampatti, Madurai</div><div class="board">Tamil Nadu State Board</div><div class="marks">2004</div><div class="marks">78% · 1st class</div></div>
+    </div>
+
+    <div class="phd-card reveal">
+      <p class="phd-title">"Experimental Investigation on Friction Stir Welding of AA6061-ZrO₂-C Particulate Composites"</p>
+      <div class="phd-meta">
+        <div><div class="k">University</div><div class="v">Anna University</div></div>
+        <div><div class="k">Mode</div><div class="v">Part-time</div></div>
+        <div><div class="k">Completed</div><div class="v">27 Feb 2020</div></div>
+        <div><div class="k">Supervisor status</div><div class="v">AU-recognised (Ref. 3720005)</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FUNDING ================= -->
+<section id="funding">
+  <div class="wrap">
+    <div class="sheet-head reveal">
+      <h2>Funded Projects</h2>
+      <span class="sheet-no">SHEET 04 / 08</span>
+    </div>
+    <div class="fund-wrap reveal">
+      <div>
+        <div class="bar-row">
+          <div class="bar-label"><span class="name">AICTE — IDEA Lab</span><span class="amt">₹90,00,000</span></div>
+          <div class="bar-track"><div class="bar-fill" data-pct="78.9"></div></div>
+          <div class="agency">All India Council for Technical Education</div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label"><span class="name">ROV Coral Reef Health Monitoring System</span><span class="amt">₹23,90,000</span></div>
+          <div class="bar-track"><div class="bar-fill" data-pct="21"></div></div>
+          <div class="agency">DST-IITNiF, Tirupati</div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label"><span class="name">TN — Niral Thiruvizha</span><span class="amt">₹10,000</span></div>
+          <div class="bar-track"><div class="bar-fill" data-pct="0.5"></div></div>
+          <div class="agency">Tamil Nadu State Council for Science &amp; Technology</div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label"><span class="name">Student Research</span><span class="amt">₹7,500</span></div>
+          <div class="bar-track"><div class="bar-fill" data-pct="0.4"></div></div>
+          <div class="agency">Tamil Nadu State Council for Science &amp; Technology</div>
+        </div>
+        <div class="fund-total">
+          <span class="l">Total secured</span>
+          <span class="v">₹1,14,07,500</span>
+        </div>
+      </div>
+      <div class="fund-note">
+        <h4>Why an ROV for coral reefs</h4>
+        <p>The DST-funded autonomous ROV project pairs his lightweight composite materials work with marine sensing — using the same hybrid-composite design thinking from his welding research to build a surveillance vehicle for South Indian reef health monitoring, a research line that fed two 2025 publications.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PATENTS ================= -->
+<section id="patents">
+  <div class="wrap">
+    <div class="sheet-head reveal">
+      <h2>Patents Granted</h2>
+      <span class="sheet-no">SHEET 05 / 08</span>
+    </div>
+    <div class="patent-summary reveal">
+      <div class="ps"><span class="n">1</span><span class="l">Austrian innovation patent</span></div>
+      <div class="ps"><span class="n">15</span><span class="l">Indian design patents</span></div>
+      <div class="ps"><span class="n">5</span><span class="l">Filings detailed below</span></div>
+    </div>
+    <div class="patent-grid reveal">
+      <div class="patent-plate">
+        <div class="pno">2021107427</div>
+        <div class="ptype">Austrian Innovation Patent</div>
+        <h4>AI-Based Smart Computing On-Board ECU for Predicting Vehicle Parts Reliability &amp; Failure</h4>
+        <div class="pdate">Granted 23.12.2021</div>
+      </div>
+      <div class="patent-plate">
+        <div class="pno">383724-001</div>
+        <div class="ptype">Indian Design IP</div>
+        <h4>The Multipurpose Agriculture Surveillance Drone</h4>
+        <div class="pdate">Granted 04.12.2023</div>
+      </div>
+      <div class="patent-plate">
+        <div class="pno">383722-001</div>
+        <div class="ptype">Indian Design IP</div>
+        <h4>An Advanced Crop Growth and Yield Monitoring Drone</h4>
+        <div class="pdate">Granted 04.12.2023</div>
+      </div>
+      <div class="patent-plate">
+        <div class="pno">384449-001</div>
+        <div class="ptype">Indian Design IP</div>
+        <h4>Battery Power Operated Agricultural Weeder</h4>
+        <div class="pdate">Granted 20.04.2023</div>
+      </div>
+      <div class="patent-plate">
+        <div class="pno">383723-001</div>
+        <div class="ptype">Indian Design IP</div>
+        <h4>An Advanced Paddy Field Seed Spreading Drone</h4>
+        <div class="pdate">Granted 04.12.2023</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PUBLICATIONS ================= -->
+<section id="publications">
+  <div class="wrap">
+    <div class="sheet-head reveal">
+      <h2>Publications</h2>
+      <span class="sheet-no">SHEET 06 / 08</span>
+    </div>
+
+    <div class="pub-stats reveal">
+      <div class="pub-stat"><div class="n">60</div><div class="l">Total publications</div></div>
+      <div class="pub-stat"><div class="n">21</div><div class="l">First / corresponding author</div></div>
+      <div class="pub-stat"><div class="n">14</div><div class="l">h-index</div></div>
+      <div class="pub-stat"><div class="n">39</div><div class="l">Co-authored</div></div>
+      <div class="pub-stat"><div class="n">32</div><div class="l">SCI indexed</div></div>
+      <div class="pub-stat"><div class="n">28</div><div class="l">Scopus indexed</div></div>
+    </div>
+
+    <div class="profile-links reveal">
+      <a class="plink" href="https://scholar.google.com/citations?user=WHvEdYAAAAAJ&hl=en" target="_blank" rel="noopener"><span class="dot"></span>Google Scholar — 571+ citations</a>
+      <a class="plink" href="https://www.scopus.com/authid/detail.uri?authorId=57193530722" target="_blank" rel="noopener"><span class="dot"></span>Scopus Author ID 57193530722</a>
+      <a class="plink" href="https://www.webofscience.com/wos/author/record/2024463" target="_blank" rel="noopener"><span class="dot"></span>Web of Science Researcher ID</a>
+      <a class="plink" href="https://in.linkedin.com/in/pandiyarajan-r-29970aa1" target="_blank" rel="noopener"><span class="dot"></span>LinkedIn</a>
+    </div>
+
+    <div class="year-filters reveal" id="yearFilters"></div>
+
+    <div class="pub-list reveal" id="pubList"></div>
+    <button class="pub-more" id="pubMore">Show all 60 →</button>
+  </div>
+</section>
+
+<!-- ================= AWARDS + RESPONSIBILITIES ================= -->
+<section id="recognition">
+  <div class="wrap">
+    <div class="sheet-head reveal">
+      <h2>Recognition &amp; Service</h2>
+      <span class="sheet-no">SHEET 07 / 08</span>
+    </div>
+    <div class="two-col reveal">
+      <div>
+        <div class="eyebrow" style="margin-bottom:18px;">Awards</div>
+        <ul class="award-list">
+          <li><span class="yr">2025</span>Prince Parasiriyar Veruthu — Innovation &amp; Patent Award</li>
+          <li><span class="yr">2022–23</span>Best Researcher Award</li>
+          <li><span class="yr">2020–21</span>Best Researcher Award</li>
+          <li><span class="yr">2020</span>Young Achiever Award, INSC Bangalore</li>
+          <li><span class="yr">2016–23</span>100% Result Award (2023, 2022, 2021, 2016)</li>
+        </ul>
+        <div class="eyebrow" style="margin:32px 0 12px;">Editorial &amp; Review</div>
+        <ul class="role-list">
+          <li>Reviewer — Advances in Material Science and Mechanical Engineering</li>
+          <li>Reviewer — Advances in Materials and Processing Technologies</li>
+          <li>Reviewer — International Journal of Metallurgy and Metal Physics</li>
+          <li>Guest Editor — American Journal of Mechanical Engineering (Computational Methods in Design &amp; Manufacturing)</li>
+        </ul>
+      </div>
+      <div>
+        <div class="eyebrow" style="margin-bottom:6px;">Institutional roles</div>
+        <div class="badge-grid">
+          <div class="badge"><b>Research Head</b>Oversees institutional research activity</div>
+          <div class="badge"><b>Head, R&amp;D</b>Agni College of Technology</div>
+          <div class="badge"><b>NBA Coordinator</b>Accreditation processes</div>
+          <div class="badge"><b>Placement Coordinator</b>Department student placements</div>
+          <div class="badge"><b>Admission In-Charge</b>Institutional admissions</div>
+          <div class="badge"><b>Affiliation In-Charge</b>University affiliation requirements</div>
+        </div>
+        <div class="eyebrow" style="margin:32px 0 12px;">Co-curricular</div>
+        <ul class="role-list">
+          <li>ISRO project work, completed 2012</li>
+          <li>25+ FDPs, seminars and workshops organised</li>
+          <li>6 NPTEL course certifications, plus NPTEL mentor certification</li>
+          <li>Annual industrial visits and student internship placements (5 companies/year)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= GALLERY ================= -->
+<section id="gallery">
+  <div class="wrap">
+    <div class="sheet-head reveal">
+      <h2>Gallery</h2>
+      <span class="sheet-no">SHEET 08 / 09</span>
+    </div>
+    <div class="gallery-grid reveal" id="galleryGrid">
+
+      <div class="gallery-item" data-idx="0">
+        <img class="gallery-img" src="gallery/dean-rd-office-portrait.jpeg" alt="Dean's Office" loading="lazy">
+        <div class="gallery-overlay">
+          <div class="g-title">Dean R&amp;D — Office Portrait</div>
+          <div class="g-tag">Profile · Agni College of Technology</div>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-idx="1">
+        <img class="gallery-img" src="gallery/prince-innovation-patent-award-2025.jpeg" alt="Prince Innovation Award" loading="lazy">
+        <div class="gallery-overlay">
+          <div class="g-title">Prince Innovation &amp; Patent Award 2025</div>
+          <div class="g-tag">Award · Prince Group of Institutions</div>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-idx="2">
+        <img class="gallery-img" src="gallery/prince-parasiriyar-veruthu-stage-ceremony.jpeg" alt="Prince Award Ceremony" loading="lazy">
+        <div class="gallery-overlay">
+          <div class="g-title">Prince Parasiriyar Veruthu — Stage Ceremony</div>
+          <div class="g-tag">Award · Innovation &amp; Patent</div>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-idx="3">
+        <img class="gallery-img" src="gallery/dst-iitnif-rov-funding.jpeg" alt="DST ROV Funding" loading="lazy">
+        <div class="gallery-overlay">
+          <div class="g-title">DST–IITNiF ROV Funding — ₹17.3 Lakhs</div>
+          <div class="g-tag">Research Funding · Coral Reef Monitoring</div>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-idx="4">
+        <img class="gallery-img" src="gallery/rov-prototype-iit-tirupati-dst-exhibition.jpeg" alt="ROV Exhibition IIT Tirupati" loading="lazy">
+        <div class="gallery-overlay">
+          <div class="g-title">ROV Prototype — IIT Tirupati DST Exhibition</div>
+          <div class="g-tag">Research Project · Autonomous Underwater</div>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-idx="5">
+        <img class="gallery-img" src="gallery/aicte-idea-lab-90-lakhs-sanctioned.jpeg" alt="AICTE IDEA Lab Funding" loading="lazy">
+        <div class="gallery-overlay">
+          <div class="g-title">AICTE IDEA Lab — ₹90 Lakhs Sanctioned</div>
+          <div class="g-tag">Research Funding · Agni College</div>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-idx="6">
+        <img class="gallery-img" src="gallery/aicte-idea-lab-inauguration-oct-2025.jpeg" alt="AICTE IDEA Lab Inauguration" loading="lazy">
+        <div class="gallery-overlay">
+          <div class="g-title">AICTE IDEA Lab — Inauguration (Oct 2025)</div>
+          <div class="g-tag">Innovation Lab · Coordinator</div>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-idx="7">
+        <img class="gallery-img" src="gallery/fdp-iot-embedded-systems.jpeg" alt="IoT FDP Workshop" loading="lazy">
+        <div class="gallery-overlay">
+          <div class="g-title">IoT &amp; Embedded Systems — FDP Session</div>
+          <div class="g-tag">Faculty Development · Workshop</div>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-idx="8">
+        <img class="gallery-img" src="gallery/fdp-large-scale-faculty-research-scholars.jpeg" alt="Large FDP Session" loading="lazy">
+        <div class="gallery-overlay">
+          <div class="g-title">Large-Scale FDP — Faculty &amp; Research Scholars</div>
+          <div class="g-tag">Faculty Development · 40+ Participants</div>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-idx="9">
+        <img class="gallery-img" src="gallery/fdp-intelligent-industrial-automation.jpeg" alt="FDP Intelligent Industrial Automation" loading="lazy">
+        <div class="gallery-overlay">
+          <div class="g-title">FDP on Intelligent Industrial Automation</div>
+          <div class="g-tag">Resource Person · Velammal Inst. of Technology</div>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-idx="10">
+        <img class="gallery-img" src="gallery/msme-entrepreneurship-awareness-programme.jpeg" alt="MSME Entrepreneurship Programme" loading="lazy">
+        <div class="gallery-overlay">
+          <div class="g-title">MSME Entrepreneurship Awareness Programme</div>
+          <div class="g-tag">Seminar · Central Institute of Tool Design</div>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-idx="11">
+        <img class="gallery-img" src="gallery/iqac-workshop-academic-research-ipr.jpeg" alt="IQAC Workshop Research IPR" loading="lazy">
+        <div class="gallery-overlay">
+          <div class="g-title">IQAC Workshop — Academic Research &amp; IPR</div>
+          <div class="g-tag">Resource Person · Agni College (Jun 2026)</div>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-idx="12">
+        <img class="gallery-img" src="gallery/uav-drone-technology-guest-lecture.jpeg" alt="UAV Drone Technology Seminar" loading="lazy">
+        <div class="gallery-overlay">
+          <div class="g-title">UAV Drone Technology — Guest Lecture</div>
+          <div class="g-tag">Invited Talk · Drone &amp; Future Technologies</div>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-idx="13">
+        <img class="gallery-img" src="gallery/technoxian-world-cup-9-prize.jpeg" alt="Technoxian World Cup Trophy" loading="lazy">
+        <div class="gallery-overlay">
+          <div class="g-title">Technoxian World Cup 9.0 — ₹40,000 Prize</div>
+          <div class="g-tag">Student Achievement · World Robotics Championship</div>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-idx="14">
+        <img class="gallery-img" src="gallery/mechatronics-national-symposium.jpeg" alt="Mechatronics Dept Symposium" loading="lazy">
+        <div class="gallery-overlay">
+          <div class="g-title">Dept of Mechatronics — National Symposium</div>
+          <div class="g-tag">Student Event · Paper Presentations</div>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-idx="15">
+        <img class="gallery-img" src="gallery/national-symposium-certificate-distribution.jpeg" alt="Symposium Certificate Distribution" loading="lazy">
+        <div class="gallery-overlay">
+          <div class="g-title">National-Level Symposium — Certificate Distribution</div>
+          <div class="g-tag">Student Achievement · Mechatronics Dept</div>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-idx="16">
+        <img class="gallery-img" src="gallery/technoxian-mentor-world-robotics-championship.jpeg" alt="Technoxian Mentor Certificate" loading="lazy">
+        <div class="gallery-overlay">
+          <div class="g-title">Technoxian Mentor — World Robotics Championship</div>
+          <div class="g-tag">Certificate · Guidance &amp; Mentorship</div>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-idx="17">
+        <img class="gallery-img" src="gallery/student-prize-distribution-hod-office.jpeg" alt="Student Awards HOD Office" loading="lazy">
+        <div class="gallery-overlay">
+          <div class="g-title">Student Prize Distribution — HOD Office</div>
+          <div class="g-tag">Student Achievement · Competition Winners</div>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-idx="18">
+        <img class="gallery-img" src="gallery/industrial-visit-tata-strive-sona-comstar.jpeg" alt="Tata Strive Industrial Visit" loading="lazy">
+        <div class="gallery-overlay">
+          <div class="g-title">Industrial Visit — Tata Strive / Sona Comstar</div>
+          <div class="g-tag">Industrial Visit · Faculty &amp; Students</div>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-idx="19">
+        <img class="gallery-img" src="gallery/tata-strive-large-student-group-visit.jpeg" alt="Tata Strive Group Visit" loading="lazy">
+        <div class="gallery-overlay">
+          <div class="g-title">Tata Strive Visit — Large Student Group</div>
+          <div class="g-tag">Industrial Visit · Skill Development</div>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-idx="20">
+        <img class="gallery-img" src="gallery/solar-project-demo-raksha-udaan-2025.jpeg" alt="Raksha Udaan Solar Project" loading="lazy">
+        <div class="gallery-overlay">
+          <div class="g-title">Solar Project Demo — Raksha Udaan 2025</div>
+          <div class="g-tag">Project Showcase · Defence Innovation Event</div>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-idx="21">
+        <img class="gallery-img" src="gallery/student-robot-testing-raksha-udaan-2025.jpeg" alt="Robot Testing Raksha Udaan" loading="lazy">
+        <div class="gallery-overlay">
+          <div class="g-title">Student Robot Testing — Raksha Udaan 2025</div>
+          <div class="g-tag">Research Demo · Autonomous Robot</div>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-idx="22">
+        <img class="gallery-img" src="gallery/phd-thesis-presentation-simats.jpeg" alt="PhD Thesis Presentation SIMATS" loading="lazy">
+        <div class="gallery-overlay">
+          <div class="g-title">PhD Thesis Presentation — SIMATS Engineering</div>
+          <div class="g-tag">Research Supervision · Biocompatible Composites</div>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-idx="23">
+        <img class="gallery-img" src="gallery/aicte-atal-idea-lab-fdp-hindusthan-cet.jpeg" alt="AICTE IDEA Lab FDP Hindusthan" loading="lazy">
+        <div class="gallery-overlay">
+          <div class="g-title">AICTE ATAL IDEA Lab FDP — Hindusthan CET</div>
+          <div class="g-tag">FDP · IDEA Lab Co-Coordinators (Apr 2025)</div>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-idx="24">
+        <img class="gallery-img" src="gallery/welcoming-r-ashwin-cricket-icon-visit.jpeg" alt="Celebrity Visit R Ashwin" loading="lazy">
+        <div class="gallery-overlay">
+          <div class="g-title">Welcoming R. Ashwin — Cricket Icon Visit</div>
+          <div class="g-tag">Celebrity Visit · Agni College of Technology</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Lightbox -->
+<div class="lb-backdrop" id="lbBackdrop">
+  <div class="lb-box">
+    <button class="lb-close" id="lbClose">✕ CLOSE</button>
+    <img id="lbImage" src="" alt="" style="width:100%;display:block;max-height:70vh;object-fit:contain;background:#0B1F3A;">
+    <div class="lb-caption">
+      <h3 id="lbTitle"></h3>
+      <p id="lbTag"></p>
+    </div>
+    <div class="lb-nav">
+      <button id="lbPrev">← Prev</button>
+      <button id="lbNext">Next →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ================= CONTACT ================= -->
+<footer id="contact">
+  <div class="wrap">
+    <div class="sheet-head reveal" style="margin-bottom:36px;">
+      <h2 style="margin:0;">Get in touch</h2>
+      <span class="sheet-no">SHEET 09 / 09</span>
+    </div>
+    <div class="contact-grid reveal">
+      <div>
+        <h2>Open to research collaboration, doctoral supervision &amp; consulting in welding &amp; composites.</h2>
+        <p>Currently Dean, R&amp;D at Agni College of Technology, Chennai, and an Anna University–recognised Ph.D. supervisor. Reach out about FSW/MMC research, funded-project partnerships, or journal review &amp; editorial work.</p>
+        <div class="clist">
+          <a href="mailto:pandiyan.rajan8@gmail.com">
+            <svg class="icon" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="1" stroke="currentColor" stroke-width="1.4"/><path d="M3 6l9 7 9-7" stroke="currentColor" stroke-width="1.4"/></svg>
+            pandiyan.rajan8@gmail.com
+          </a>
+          <a href="tel:+919940833549">
+            <svg class="icon" viewBox="0 0 24 24" fill="none"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2C9.6 21 3 14.4 3 6a2 2 0 0 1 2-2z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>
+            +91 99408 33549
+          </a>
+          <span>
+            <svg class="icon" viewBox="0 0 24 24" fill="none"><path d="M12 21s7-6.5 7-12a7 7 0 1 0-14 0c0 5.5 7 12 7 12z" stroke="currentColor" stroke-width="1.3"/><circle cx="12" cy="9" r="2.4" stroke="currentColor" stroke-width="1.3"/></svg>
+            Periyar Street, Siruseri, OMR, Thalambur, Chennai 600130
+          </span>
+        </div>
+      </div>
+      <div class="ext-grid">
+        <a class="ext-link" href="https://scholar.google.com/citations?user=WHvEdYAAAAAJ&hl=en" target="_blank" rel="noopener">
+          <div><div class="name">Google Scholar</div><div class="sub">571+ citations · h-index 14</div></div><div class="arrow">↗</div>
+        </a>
+        <a class="ext-link" href="https://www.scopus.com/authid/detail.uri?authorId=57193530722" target="_blank" rel="noopener">
+          <div><div class="name">Scopus</div><div class="sub">Author ID 57193530722</div></div><div class="arrow">↗</div>
+        </a>
+        <a class="ext-link" href="https://www.webofscience.com/wos/author/record/2024463" target="_blank" rel="noopener">
+          <div><div class="name">Web of Science</div><div class="sub">Researcher Record 2024463</div></div><div class="arrow">↗</div>
+        </a>
+        <a class="ext-link" href="https://in.linkedin.com/in/pandiyarajan-r-29970aa1" target="_blank" rel="noopener">
+          <div><div class="name">LinkedIn</div><div class="sub">Pandiyarajan R</div></div><div class="arrow">↗</div>
+        </a>
+      </div>
+    </div>
+    <div class="bottom">
+      <span>© 2026 Dr. R. Pandiyarajan</span>
+      <span>Agni College of Technology, Chennai · Anna University Ph.D. (2020)</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ---------- publication data ----------
+const PUBS = [
+{n:1,y:2025,a:"Pandiyarajan, R., Manohar, K., Nazhurudeen, A.",t:"A comprehensive literature review on coral reef health monitoring: techniques, status, and emerging trends with special focus on South India.",v:"Machine Learning for Computational Science and Engineering, 1(2), 36"},
+{n:2,y:2025,a:"Shunmugaraj, L., Starvin, M.S., Pandiyarajan, R.",t:"Optimization of SFSW parameters in dissimilar aluminum alloy processing.",v:"JOM, pp. 1–15"},
+{n:3,y:2025,a:"Arivazhagan, R., Geetha, N.B., Pandiyarajan, R.",t:"Experimental and numerical investigation of PCMS on ceilings for thermal management.",v:"Journal of Engineering Research, 13(1), 229–242"},
+{n:4,y:2025,a:"Narendranathan, S.K., Pandiyarajan, R., Sabarish, S.",t:"Influence of modified operating parameters and thermal barrier coating on diesel engine performance using punnai oil mixture.",v:"Journal of Engineering Research, 13(1), 218–228"},
+{n:5,y:2025,a:"Pandiyarajan, R., Nazhurudeen, A.",t:"A study on integration of lightweight composite materials in autonomous ROVs for coral reef surveillance.",v:"Research in Materials Science, 1(1), 2549246"},
+{n:6,y:2025,a:"Radhakrishnan, R., Starvin, M.S., Pandiyarajan, R.",t:"Mechanical and microstructural behavior of ZE41 magnesium alloy reinforced with inconel for high-performance applications.",v:"Physica Scripta, 100(3), 035010"},
+{n:7,y:2024,a:"Sivabalan, R., Pandiyarajan, R., Starvin, M.S.",t:"Optimizing CO2 laser beam welding parameters for magnesium hybrid metal matrix composites (ZE41A).",v:"Materials and Manufacturing Processes"},
+{n:8,y:2024,a:"Duraimurugan, I., Anandavelu, K., Pandiyarajan, R.",t:"Characterization of graphite and ZrO2 reinforced aluminium metal matrix composite for enhanced mechanical properties in electronics applications.",v:"Physica Scripta"},
+{n:9,y:2024,a:"Balasubramani, V., Nagarajan, K.J., Karthic, M., Pandiyarajan, R.",t:"Extraction of lignocellulosic fiber and cellulose microfibrils from agro waste — palmyra fruit peduncle: water retting, chlorine-free chemical treatments, physio-chemical, morphological, and thermal characterization.",v:"International Journal of Biological Macromolecules, 259(2), 129273"},
+{n:10,y:2023,a:"Manikandaraja, G., Pandiyarajan, R., Vasanthanathan, A., Sabarish, S.",t:"Experimental exploration of mechanical behaviour of graphene oxide blend polymer nanocomposites.",v:"Pigment & Resin Technology"},
+{n:11,y:2023,a:"Arivazhagan, R., Geetha, N.B., Pandiyarajan, R.",t:"Experimental and numerical investigation of PCMS on ceilings for thermal management.",v:"Journal of Engineering Research"},
+{n:12,y:2023,a:"Balasubramani, V., Pandiarajan, R., Stalin, B., Kavimani, V.",t:"Mechanical and metallurgical characterization of B4C and SiC reinforced stir casted AA6061 hybrid MMC.",v:"Physica Scripta, 98(10), 105922"},
+{n:13,y:2023,a:"Narendranathan, S.K., Pandiyarajan, R., Panneerselvam, P., Sabarish, S.",t:"Influence of modified operating parameters and thermal barrier coating on diesel engine performance using punnai oil mixture.",v:"Journal of Engineering Research"},
+{n:14,y:2023,a:"Lewise, K., Dhas, J., Pandiyarajan, R.",t:"Design, fabrication and analysis of linear clamping fixture for friction stir spot welding.",v:"AIP Publishing, vol. 2492"},
+{n:15,y:2023,a:"Satheeshkumar, M., Thansekhar, M., Pandiyarajan, R.",t:"Examining the impact of inlet header configurations on wavy microchannel heat sinks.",v:"Heat and Mass Transfer, 1–15"},
+{n:16,y:2023,a:"Lewise, K.A.S., Dhas, J.E.R., Pandiyarajan, R., Sabarish, S.",t:"Metallurgical and mechanical investigation on FSSWed dissimilar aluminum alloy.",v:"Journal of Alloys and Metallurgical Systems, 2, 100010"},
+{n:17,y:2023,a:"Saranraj, I., Ganesan, S., Pandiyarajan, R.",t:"A tribological characteristics and experimental analysis of novel chlorella biodiesel blends on engine performance.",v:"Physica Scripta, 98(5), 055019"},
+{n:18,y:2023,a:"Pandiyarajan, R., Chandravadhana, Vivek, T., Agnishwar Jayaprakash",t:"Implementation of Leader Follower Approach in Quadcopter.",v:"River Publishers Series in Proceedings"},
+{n:19,y:2023,a:"Pandiyarajan Rajendran, A.J.",t:"Numerical performance analysis of a twin blade drone rotor propeller.",v:"Materials Today: Proceedings"},
+{n:20,y:2022,a:"Ashok Kumar, R., Pandiyarajan, R., Raghav, G.R., Nagarajan, K.J., Rengarajan, S., Pandian, D.S., Sudhakar, K.",t:"Role of traversing speed and axial load on the properties of friction stir welded dissimilar AA6101-T6 and AA1350 aluminium alloys.",v:"Journal of the Chinese Institute of Engineers"},
+{n:21,y:2022,a:"Ponsuriyaprakash, S., Udhayakumar, P., Pandiyarajan, R., Antony Prabu, D., Gurusamy, P.",t:"Synthesis, characterization and production of 3D printing filament by biodegradable fiber reinforced ABS polymer matrix composite material.",v:"Recent Advances in Materials Technologies (ICEMT 2021), 305–316, Springer"},
+{n:22,y:2022,a:"Anton Savio Lewise, K., Edwin Raja Dhas, J., Pandiyarajan, R.",t:"Corrosion behavior of FSSWed AA2024 and AA7075 dissimilar aluminum-alloy.",v:"Recent Advances in Materials Technologies (ICEMT 2021), 225–232, Springer"},
+{n:23,y:2022,a:"Rk, S., P, Edwin Samson, Pandiyarajan, R.",t:"Experimental and theoretical analysis of polymer blend composites using Weibull distribution.",v:"Journal of the Chinese Institute of Engineers, 45(7), 588–601"},
+{n:24,y:2022,a:"Pandiyarajan, R., Ponsuriyaprakash, S.",t:"Experimental investigation of morphological and mechanical properties of SiC-neem-coir fiber reinforced hybrid composite.",v:"Journal of the Chinese Institute of Engineers, 45(6), 532–542"},
+{n:25,y:2022,a:"Anton Savio Lewise, K., Raja Dhas, J.E., Pandiyarajan, R.",t:"Optimising aluminium 2024/7075 friction stir welded joints.",v:"Advances in Materials and Processing Technologies, 8(4), 4579–4597"},
+{n:26,y:2022,a:"Anton Savio Lewise, K., Pandiyarajan, R.",t:"Microstructure and mechanical properties of friction stir spot welded dissimilar aluminum alloys.",v:"Journal of the Chinese Institute of Engineers, 45(5), 453–464"},
+{n:27,y:2022,a:"Vivek, J., Maridurai, T., Lewise, K.A.S., Pandiyarajan, R., Chandrasekaran, K.",t:"Recast layer thickness and residual stress analysis for EDD AA8011/h-BN/B4C composites using cryogenically treated SiC and CFRP powder-added kerosene.",v:"Arabian Journal for Science and Engineering, 47(12), 15613–15632"},
+{n:28,y:2022,a:"Ponsuriyaprakash, S., Udhayakumar, P., Pandiyarajan, R.",t:"Mechanical characterization and morphological behavior of a novel composite of ABS polymer strengthened by cellulose.",v:"Journal of the Chinese Institute of Engineers, 45(3), 255–265"},
+{n:29,y:2022,a:"Saravanan, N., Kumar, B., Navin, G., Bharathiraja, Pandiyarajan, R.",t:"Optimization and characterization of surface treated Lagenaria siceraria fiber and its reinforcement effect on epoxy composites.",v:"Pigment & Resin Technology"},
+{n:30,y:2021,a:"Satheeshkumar, M., Thansekhar, M., Pandiyarajan, R.",t:"Influence of ceramic based nanofluids and inlet header geometry on the thermal performance of wavy microchannel heat sink.",v:"Journal of Ceramic Processing Research, 22(6), 679–691"},
+{n:31,y:2021,a:"Ponsuriyaprakash, S., Udhayakumar, P., Pandiyarajan, R.",t:"Optimization and analysis of dry sliding wear process parameters on cellulose reinforced ABS polymer composite material.",v:"Pigment & Resin Technology"},
+{n:32,y:2022,a:"Mohanraj, M., Pandiyarajan, R., Jayakumar, K.S., Prabu, D.A., Sabarish, S., Sankaralingam, T.",t:"Determination of vibration analysis in single and double cracked cantilever numerical beam.",v:"Materials Today: Proceedings, 52, 462–466"},
+{n:33,y:2021,a:"Sabarish, S., Udhayakumar, P., Pandiyarajan, R.",t:"Additive manufacturing for customized hearing aid parts production: an empirical study.",v:"Journal of the Chinese Institute of Engineers, 44(7), 704–717"},
+{n:34,y:2021,a:"Uma, M.J., Palaniappan, P.L.K., Maran, P., Pandiyarajan, R.",t:"Influences of ZrO2 and B4C reinforcement on metallurgical, mechanical, and tribological properties of AA6082 hybrid composite materials.",v:"Journal of Ceramic Processing Research, 22(3), 306–316"},
+{n:35,y:2021,a:"Uma, M.J., Palaniappan, P.L.K., Maran, P., Pandiyarajan, R.",t:"Investigation and optimization of friction stir welding process parameters of stir cast AA6082/ZrO2/B4C composites.",v:"Materials Science-Poland, 38(4), 715–730"},
+{n:36,y:2021,a:"Balaji, G., Kumar, B.N., Vijayarangam, J., Vasudevan, A., Pandiyarajan, R.",t:"Numerical investigation of expansion fan optimization of truncated annular aerospike nozzle.",v:"Materials Today: Proceedings, 46, 4283–4288"},
+{n:37,y:2021,a:"Kumar, B.N., Vijayarangam, J., Vasudevan, A., Pandiyarajan, R., Balaji, G., Karunagaran, N., Nanthakumar, P.",t:"Design and fabrication of bamboo composites sandwich panels for flooring.",v:"Materials Today: Proceedings, 46, 4313–4321"},
+{n:38,y:2021,a:"Pandiyarajan, R., Balaji, G., Kumar, B.N., Vijayarangam, J., Vasudevan, A., Karunagaran, Nanthakumar, P.",t:"Micro structural and tensile behaviour of FS welded dissimilar Al-Cu alloy.",v:"Materials Today: Proceedings, 46, 4309–4312"},
+{n:39,y:2021,a:"Pandiyarajan, R.",t:"Improving mechanical strength on welded joints by using optimisation technique.",v:"International Journal of Enterprise Network Management, 12(1), 85–96"},
+{n:40,y:2020,a:"Pandiyarajan, R., Prabakaran, M.P.",t:"Characterization of AA6061-ZrO2-C friction stir welded composite joints.",v:"Journal of Ceramic Processing Research, 21(6), 690–698"},
+{n:41,y:2022,a:"Prabakaran, M.P., Kannan, G.R., Pandiyarajan, R.",t:"Effects of welding speed on microstructure and mechanical properties of CO2 laser welded dissimilar butt joints between low carbon steel and austenitic stainless steel.",v:"Advances in Materials and Processing Technologies, 8(sup1), 1–12"},
+{n:42,y:2020,a:"Vijayarangam, J., Navin Kumar, B., Vasudevan, A., Pandiyarajan, R.",t:"Simplified analysis of a multiproduct newsboy problem using simulation.",v:"IOP Publishing, vol. 988"},
+{n:43,y:2020,a:"Vasudevan, A., Pandiyarajan, R., Navin Kumar, B., Vijayarangam, J.",t:"Effect of Kevlar ply orientation on mechanical characterization of Kevlar-glass fiber laminated composites.",v:"IOP Publishing, vol. 988"},
+{n:44,y:2020,a:"Navin Kumar, B., Vijayarangam, J., Pandiyarajan, R., Vasudevan, A.",t:"Over speed protection of horizontal axis wind turbine using slot in the turbine blade.",v:"IOP Publishing, vol. 988"},
+{n:45,y:2022,a:"Ponsuriyaprakash, S., Udhayakumar, P., Pandiyarajan, R.",t:"Experimental investigation of ABS matrix and cellulose fiber reinforced polymer composite materials.",v:"Journal of Natural Fibers, 19(9), 3241–3252"},
+{n:46,y:2020,a:"Pandiyarajan, R., Marimuthu, S.",t:"Parametric optimization and tensile behaviour analysis of AA6061-ZrO2-C FSW samples using Box-Behnken method.",v:"Materials Today: Proceedings"},
+{n:47,y:2021,a:"Pandiyarajan, R., Arumugam, K., Prabakaran, M.P.",t:"Fatigue life and fatigue crack growth rate analysis of high strength low alloy steel (42CrMo4).",v:"Materials Today: Proceedings, 37, 1957–1962"},
+{n:48,y:2022,a:"Pandiyarajan, R., Maran, P., Marimuthu, S., Prabakaran, M.P.",t:"Investigation on mechanical properties of ZrO2, C and AA6061 metal matrix composites.",v:"Advances in Materials and Processing Technologies, 8(sup1), 178–186"},
+{n:49,y:2021,a:"Pandiyarajan, R., Prabakaran, M.P., Rajkumar, T., Kumar, K.V., Manikandan, R.",t:"Metallurgical and mechanical properties of SiC/B4C reinforced with aluminum composites synthesized by mechanical alloying.",v:"Materials Today: Proceedings, 37, 1794–1798"},
+{n:50,y:2020,a:"Kasirajan, Senthilkumaran, Pandiyarajan, R.",t:"Experimental investigation of basalt/s-glass/epoxy/PVC H-130 hybrid sandwich composite.",v:"Journal of the Chinese Institute of Engineers"},
+{n:51,y:2020,a:"Prabakaran, M.P., Kannan, G.R., Vetrivel Kumar, K., Pandiyarajan, R., Pradeepa, M.",t:"Optimization of Nd:YAG pulsed laser welding process parameters on dissimilar metal joints.",v:"Wutan Huatan Jisuan Jishu, 16(6), 25–35"},
+{n:52,y:2020,a:"Pandiyarajan, R., Marimuthu, S.",t:"Dry sliding wear behaviour of aluminium matrix composite materials.",v:"Test Engineering and Management, 83, 15086–15089"},
+{n:53,y:2019,a:"Pandiyarajan, R., Maran, P., Marimuthu, S., Arumugam, K.",t:"Mechanical and metallurgical characterization of friction stir welded AA6061-ZrO2-C hybrid MMCs.",v:"Materials Today: Proceedings, 19, 256–259"},
+{n:54,y:2019,a:"Pandiyarajan, R., Maran, P., Murugan, N., Marimuthu, S., Sornakumar, T.",t:"Friction stir welding of hybrid AA6061-ZrO2-C composites — FSW process optimization using desirability approach.",v:"Materials Research Express, 6(6), 066553"},
+{n:55,y:2017,a:"Pandiyarajan, R., Maran, P., Marimuthu, S., Ganesh, K.C.",t:"Synthesis and characterization of zirconium dioxide particulate reinforced aluminium alloy metal matrix composite.",v:"Indian Journal of Engineering and Materials Sciences, 24, 390–396"},
+{n:56,y:2017,a:"Starvin, M.S., Ganesh, K.C., Pandiyarajan, R.",t:"Correlation of fracture parameters during onset of crack in middle tension specimen.",v:"Journal of Computational Design and Engineering, 4(3), 169–177"},
+{n:57,y:2017,a:"Pandiyarajan, R., Maran, P., Marimuthu, S., Ganesh, K.C.",t:"Mechanical and tribological behavior of the metal matrix composite AA6061/ZrO2/C.",v:"Journal of Mechanical Science and Technology, 31, 4711–4717"},
+{n:58,y:2012,a:"Pandiyarajan, R., Starvin, M.S., Ganesh, K.C.",t:"Analytical and numerical determination of contact stress in large diameter ball bearing using Hatzian elliptical contact method.",v:"IEEE"},
+{n:59,y:2015,a:"Pandiyarajan, R., Maheswaran, K., Dwaragakannan, N.G., Aravind",t:"Verification and study of line contact stress in rail wheel application.",v:"International Journal of Applied Engineering Research, 10, 85"},
+{n:60,y:2012,a:"Pandiyarajan, R., Starvin, M.S., Ganesh, K.C.",t:"Contact stress distribution of large diameter ball bearing using Hertzian elliptical contact theory.",v:"Procedia Engineering, 38, 264–269"}
+];
+
+PUBS.sort((a,b)=> b.y - a.y || a.n - b.n);
+
+const years = Array.from(new Set(PUBS.map(p=>p.y))).sort((a,b)=>b-a);
+const yearFilters = document.getElementById('yearFilters');
+const allChip = document.createElement('button');
+allChip.className='ychip active'; allChip.textContent='All years'; allChip.dataset.year='all';
+yearFilters.appendChild(allChip);
+years.forEach(y=>{
+  const c = document.createElement('button');
+  c.className='ychip'; c.textContent=y; c.dataset.year=y;
+  yearFilters.appendChild(c);
+});
+
+const pubList = document.getElementById('pubList');
+let visibleCount = 12;
+let activeYear = 'all';
+
+function renderPubs(){
+  pubList.innerHTML='';
+  const filtered = activeYear==='all' ? PUBS : PUBS.filter(p=>p.y==activeYear);
+  const showAll = activeYear !== 'all';
+  const slice = showAll ? filtered : filtered.slice(0, visibleCount);
+  slice.forEach(p=>{
+    const row = document.createElement('div');
+    row.className='pub-row';
+    row.innerHTML = `<div class="idx">${String(p.n).padStart(2,'0')}</div>
+      <div><div class="ptitle">${p.t}</div><div class="pauthors">${p.a}</div><div class="pvenue">${p.v}</div></div>
+      <div class="pyear">${p.y}</div>`;
+    pubList.appendChild(row);
+  });
+  pubMore.style.display = (!showAll && visibleCount < filtered.length) ? 'inline-block' : 'none';
+  pubMore.textContent = `Show all ${filtered.length} →`;
+}
+
+const pubMore = document.getElementById('pubMore');
+pubMore.addEventListener('click', ()=>{ visibleCount = 999; renderPubs(); });
+
+yearFilters.addEventListener('click', (e)=>{
+  if(!e.target.classList.contains('ychip')) return;
+  [...yearFilters.children].forEach(c=>c.classList.remove('active'));
+  e.target.classList.add('active');
+  activeYear = e.target.dataset.year;
+  visibleCount = 12;
+  renderPubs();
+});
+
+renderPubs();
+
+// ---------- nav active state + mobile toggle ----------
+const navToggle = document.getElementById('navToggle');
+const navlinks = document.getElementById('navlinks');
+navToggle.addEventListener('click', ()=> navlinks.classList.toggle('open'));
+
+const sections = document.querySelectorAll('section[id], footer[id]');
+const links = document.querySelectorAll('.navlinks a');
+const spy = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      links.forEach(l=>l.classList.remove('active'));
+      const match = document.querySelector(`.navlinks a[href="#${entry.target.id}"]`);
+      if(match) match.classList.add('active');
+    }
+  });
+}, {rootMargin:'-45% 0px -50% 0px'});
+sections.forEach(s=>spy.observe(s));
+
+// ---------- reveal on scroll ----------
+const revealEls = document.querySelectorAll('.reveal');
+const revealObs = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); revealObs.unobserve(e.target); } });
+}, {threshold:0.12});
+revealEls.forEach(el=>revealObs.observe(el));
+
+// ---------- funding bar animation ----------
+const bars = document.querySelectorAll('.bar-fill');
+const barObs = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.style.width = e.target.dataset.pct + '%';
+      barObs.unobserve(e.target);
+    }
+  });
+}, {threshold:0.3});
+bars.forEach(b=>barObs.observe(b));
+
+// ---------- gallery lightbox ----------
+const GALLERY = [
+  {src:"gallery/dean-rd-office-portrait.jpeg",       title:"Dean R&D — Office Portrait",                              tag:"Profile · Agni College of Technology"},
+  {src:"gallery/prince-innovation-patent-award-2025.jpeg",   title:"Prince Innovation & Patent Award 2025",                   tag:"Award · Prince Group of Institutions"},
+  {src:"gallery/prince-parasiriyar-veruthu-stage-ceremony.jpeg",       title:"Prince Parasiriyar Veruthu — Stage Ceremony",             tag:"Award · Innovation & Patent"},
+  {src:"gallery/dst-iitnif-rov-funding.jpeg",       title:"DST–IITNiF ROV Funding — ₹17.3 Lakhs",                   tag:"Research Funding · Coral Reef Monitoring"},
+  {src:"gallery/rov-prototype-iit-tirupati-dst-exhibition.jpeg",       title:"ROV Prototype — IIT Tirupati DST Exhibition",             tag:"Research Project · Autonomous Underwater"},
+  {src:"gallery/aicte-idea-lab-90-lakhs-sanctioned.jpeg",       title:"AICTE IDEA Lab — ₹90 Lakhs Sanctioned",                  tag:"Research Funding · Agni College"},
+  {src:"gallery/aicte-idea-lab-inauguration-oct-2025.jpeg",       title:"AICTE IDEA Lab — Inauguration (Oct 2025)",                tag:"Innovation Lab · Coordinator"},
+  {src:"gallery/fdp-iot-embedded-systems.jpeg",   title:"IoT & Embedded Systems — FDP Session",                   tag:"Faculty Development · Workshop"},
+  {src:"gallery/fdp-large-scale-faculty-research-scholars.jpeg",       title:"Large-Scale FDP — Faculty & Research Scholars",           tag:"Faculty Development · 40+ Participants"},
+  {src:"gallery/fdp-intelligent-industrial-automation.jpeg",       title:"FDP on Intelligent Industrial Automation",                tag:"Resource Person · Velammal Inst. of Technology"},
+  {src:"gallery/msme-entrepreneurship-awareness-programme.jpeg",       title:"MSME Entrepreneurship Awareness Programme",              tag:"Seminar · Central Institute of Tool Design"},
+  {src:"gallery/iqac-workshop-academic-research-ipr.jpeg",       title:"IQAC Workshop — Academic Research & IPR",                tag:"Resource Person · Agni College (Jun 2026)"},
+  {src:"gallery/uav-drone-technology-guest-lecture.jpeg",       title:"UAV Drone Technology — Guest Lecture",                   tag:"Invited Talk · Drone & Future Technologies"},
+  {src:"gallery/technoxian-world-cup-9-prize.jpeg",       title:"Technoxian World Cup 9.0 — ₹40,000 Prize",               tag:"Student Achievement · World Robotics Championship"},
+  {src:"gallery/mechatronics-national-symposium.jpeg",   title:"Dept of Mechatronics — National Symposium",              tag:"Student Event · Paper Presentations"},
+  {src:"gallery/national-symposium-certificate-distribution.jpeg",       title:"National-Level Symposium — Certificate Distribution",    tag:"Student Achievement · Mechatronics Dept"},
+  {src:"gallery/technoxian-mentor-world-robotics-championship.jpeg",       title:"Technoxian Mentor — World Robotics Championship",        tag:"Certificate · Guidance & Mentorship"},
+  {src:"gallery/student-prize-distribution-hod-office.jpeg",   title:"Student Prize Distribution — HOD Office",                tag:"Student Achievement · Competition Winners"},
+  {src:"gallery/industrial-visit-tata-strive-sona-comstar.jpeg",   title:"Industrial Visit — Tata Strive / Sona Comstar",          tag:"Industrial Visit · Faculty & Students"},
+  {src:"gallery/tata-strive-large-student-group-visit.jpeg",       title:"Tata Strive Visit — Large Student Group",                tag:"Industrial Visit · Skill Development"},
+  {src:"gallery/solar-project-demo-raksha-udaan-2025.jpeg",       title:"Solar Project Demo — Raksha Udaan 2025",                 tag:"Project Showcase · Defence Innovation Event"},
+  {src:"gallery/student-robot-testing-raksha-udaan-2025.jpeg",       title:"Student Robot Testing — Raksha Udaan 2025",              tag:"Research Demo · Autonomous Robot"},
+  {src:"gallery/phd-thesis-presentation-simats.jpeg",       title:"PhD Thesis Presentation — SIMATS Engineering",           tag:"Research Supervision · Biocompatible Composites"},
+  {src:"gallery/aicte-atal-idea-lab-fdp-hindusthan-cet.jpeg",       title:"AICTE ATAL IDEA Lab FDP — Hindusthan CET",               tag:"FDP · IDEA Lab Co-Coordinators (Apr 2025)"},
+  {src:"gallery/welcoming-r-ashwin-cricket-icon-visit.jpeg",       title:"Welcoming R. Ashwin — Cricket Icon Visit",               tag:"Celebrity Visit · Agni College of Technology"},
+];
+
+let lbCurrent = 0;
+const lbBackdrop = document.getElementById('lbBackdrop');
+const lbClose    = document.getElementById('lbClose');
+const lbTitle    = document.getElementById('lbTitle');
+const lbTag      = document.getElementById('lbTag');
+const lbImage    = document.getElementById('lbImage');
+const lbPrev     = document.getElementById('lbPrev');
+const lbNext     = document.getElementById('lbNext');
+
+function openLb(idx){
+  lbCurrent = idx;
+  const g = GALLERY[idx];
+  lbImage.src = g.src;
+  lbImage.alt = g.title;
+  lbTitle.textContent = g.title;
+  lbTag.textContent   = g.tag;
+  lbBackdrop.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLb(){
+  lbBackdrop.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.querySelectorAll('.gallery-item').forEach(el=>{
+  el.addEventListener('click', ()=> openLb(+el.dataset.idx));
+});
+lbClose.addEventListener('click', closeLb);
+lbBackdrop.addEventListener('click', e=>{ if(e.target===lbBackdrop) closeLb(); });
+lbPrev.addEventListener('click', ()=> openLb((lbCurrent - 1 + GALLERY.length) % GALLERY.length));
+lbNext.addEventListener('click', ()=> openLb((lbCurrent + 1) % GALLERY.length));
+document.addEventListener('keydown', e=>{
+  if(!lbBackdrop.classList.contains('open')) return;
+  if(e.key==='Escape') closeLb();
+  if(e.key==='ArrowLeft')  openLb((lbCurrent - 1 + GALLERY.length) % GALLERY.length);
+  if(e.key==='ArrowRight') openLb((lbCurrent + 1) % GALLERY.length);
+});
+
+// Dynamic experience years — start: June 1, 2012; increments 0.1 per month
+(function(){
+  const start = new Date(2013, 1, 1); // Feb 1, 2013 — base that yields current 13.4
+  const now = new Date();
+  const months = (now.getFullYear() - start.getFullYear()) * 12 + (now.getMonth() - start.getMonth());
+  const yrs = (months / 12).toFixed(1);
+  const el1 = document.getElementById('exp-yrs');
+  const el2 = document.getElementById('exp-yrs-2');
+  if(el1) el1.textContent = yrs;
+  if(el2) el2.textContent = yrs + ' YEARS';
+})();
+</script>
+</body>
+</html>
