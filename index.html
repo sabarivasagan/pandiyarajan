@@ -104,7 +104,9 @@
   .brand{
     font-family:var(--font-mono); font-size:13px; letter-spacing:.06em;
     color:#fff; display:flex; align-items:center; gap:10px;
+    text-decoration:none;
   }
+  a.brand, a.brand:visited{ color:#fff; }
   .brand .tag{color:#C084FC;}
   .navlinks{display:flex; gap:28px; font-family:var(--font-mono); font-size:12.5px; letter-spacing:.04em;}
   .navlinks a{color:rgba(255,255,255,0.65); position:relative; padding:4px 0; transition:color .2s;}
@@ -631,7 +633,7 @@
 
 <header class="nav">
   <div class="nav-inner">
-    <a class="brand" href="#top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;" style="text-decoration:none;color:inherit;cursor:pointer;">DR. R. PANDIYARAJAN <span class="tag">/ DWG-CV-01</span></a>
+    <a class="brand" href="#top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;" style="text-decoration:none;color:#fff !important;cursor:pointer;">DR. R. PANDIYARAJAN <span class="tag">/ DWG-CV-01</span></a>
     <nav class="navlinks" id="navlinks">
       <a href="#summary">Profile</a>
       <a href="#experience">Experience</a>
