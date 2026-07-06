@@ -347,7 +347,7 @@
   .pub-stats{
     display:grid; grid-template-columns:repeat(6,1fr); border:1px solid var(--line); margin-bottom:36px;
   }
-  @media (max-width:860px){ .pub-stats{grid-template-columns:repeat(3,1fr);} }
+  @media (max-width:1040px){ .pub-stats{grid-template-columns:repeat(3,1fr);} }
   @media (max-width:520px){ .pub-stats{grid-template-columns:repeat(2,1fr);} }
   .pub-stat{padding:18px 12px; text-align:center; border-right:1px solid var(--line);}
   .pub-stat:last-child{border-right:none;}
@@ -483,7 +483,8 @@
   /* lightbox */
   .lb-backdrop{
     display:none; position:fixed; inset:0; z-index:999;
-    background:linear-gradient(0deg, rgba(30,7,70,0.95), rgba(76,29,149,0.5) 50%, transparent); backdrop-filter:blur(8px);
+    background:rgba(20,5,50,0.92);
+    backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
     align-items:center; justify-content:center; padding:24px;
     opacity:0; transition:opacity 0.3s ease;
   }
@@ -648,7 +649,7 @@
     <nav class="navlinks" id="navlinks">
       <a href="#summary">Profile</a>
       <a href="#experience">Experience</a>
-      <a href="#education">Research</a>
+      <a href="#education">Education</a>
       <a href="#funding">Funding</a>
       <a href="#patents">Patents</a>
       <a href="#publications">Publications</a>
@@ -859,7 +860,7 @@
     <div class="summary-grid reveal">
       <div>
         <p>Dr. R. Pandiyarajan is a mechanical engineering academic based in Chennai, currently serving as <b style="color:var(--ink)">Dean, Research &amp; Development</b> at Agni College of Technology. Over thirteen years across four institutions, his work has stayed close to one question: how do you join and characterise hybrid metal matrix composites so they hold up under real load?</p>
-        <p>His doctoral research, completed part-time at Anna University while teaching full time, examined friction stir welding of AA6061 reinforced with ZrO₂ and carbon particulate. That same experimental discipline — stir-casting, welding parameter optimisation, microstructure and fatigue testing — now runs through funded projects in agricultural drones, vehicle-reliability electronics, and coral-reef monitoring ROVs.</p>
+        <p>His doctoral research, completed at Anna University, examined friction stir welding of AA6061 reinforced with ZrO₂ and carbon particulate. That same experimental discipline — stir-casting, welding parameter optimisation, microstructure and fatigue testing — now runs through funded projects in agricultural drones, vehicle-reliability electronics, and coral-reef monitoring ROVs.</p>
         <p>He is a recognised Anna University Ph.D. supervisor, a peer reviewer for three international journals, and a guest editor for the American Journal of Mechanical Engineering.</p>
       </div>
       <div class="focus-list">
@@ -957,7 +958,6 @@
       <p class="phd-title">"Experimental Investigation on Friction Stir Welding of AA6061-ZrO₂-C Particulate Composites"</p>
       <div class="phd-meta">
         <div><div class="k">University</div><div class="v">Anna University</div></div>
-        <div><div class="k">Mode</div><div class="v">Part-time</div></div>
         <div><div class="k">Completed</div><div class="v">27 Feb 2020</div></div>
         <div><div class="k">Supervisor status</div><div class="v">AU-recognised (Ref. 3720005)</div></div>
       </div>
@@ -1352,9 +1352,9 @@
     <div style="position:relative;overflow:hidden;line-height:0;">
       <img id="lbImage" src="" alt="" style="width:100%;display:block;max-height:70vh;object-fit:contain;background:#0B1F3A;">
       <div style="position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,0.72) 0%,transparent 45%);pointer-events:none;"></div>
-      <div class="lb-caption" style="position:absolute;bottom:0;left:0;right:0;padding:20px 22px;margin:0;">
-        <h3 id="lbTitle" style="color:#fff;"></h3>
-        <p id="lbTag" style="color:rgba(196,181,253,0.9);"></p>
+      <div style="position:absolute;bottom:0;left:0;right:0;padding:18px 20px;margin:0;line-height:normal;">
+        <h3 id="lbTitle" style="color:#fff;font-family:var(--font-display);font-size:16px;font-weight:700;line-height:1.3;margin:0 0 5px 0;display:block;"></h3>
+        <p id="lbTag" style="color:rgba(196,181,253,0.9);font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:.05em;margin:0;display:block;line-height:1.4;"></p>
       </div>
     </div>
     <div class="lb-nav">
